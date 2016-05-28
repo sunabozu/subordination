@@ -8,11 +8,11 @@
     "package:osx": "electron-packager . --platform=darwin --arch=x64 --app-bundle-id='org.subordination' --osx-sign.identity='troorl' --prune --asar --overwrite",
     "postinstall": "install-app-deps",
     "clean": "rm -rf ./installers",
-    "build": "npm run build-release && npm run clean && npm run build:osx && npm run build:win",
-    "build:osx": "build --platform=darwin --arch=x64",
-    "build:win": "build --platform=win32 --arch=ia32",
+    "dist": "npm run build-release && npm run clean && npm run dist:osx && npm run dist:win",
+    "dist:osx": "build --platform=darwin --arch=x64",
+    "dist:win": "build --platform=win32 --arch=ia32",
     "start": "APP_DEBUG=1 electron ./app",
-		"publish": "node_modules/.bin/build --platform=darwin --arch=x64 --publish onTagOrDraft && node_modules/.bin/build --platform=win32 --arch=ia32 --publish onTagOrDraft"
+		"publish": "npm run clean && build --platform=darwin --arch=x64 --publish onTagOrDraft && build --platform=win32 --arch=ia32 --publish onTagOrDraft"
   },
   "build": {
     "app-bundle-id": "org.subordination",
