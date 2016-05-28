@@ -1,0 +1,122 @@
+//
+// Utilities styles
+// --------------------------------------------------
+
+// Utility classes
+.selectable-text {
+  cursor: text;
+  -webkit-user-select: text;
+}
+
+// Text alignment
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+// Floats
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+// Padding
+.padded {
+  padding: var(--padding);
+}
+
+.padded-less {
+  padding: var(--padding-less);
+}
+
+.padded-more {
+  padding: var(--padding-more);
+}
+
+// Vertical Padding
+.padded-vertically {
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+}
+
+.padded-vertically-less {
+  padding-top: var(--padding-less);
+  padding-bottom: var(--padding-less);
+}
+
+.padded-vertically-more {
+  padding-top: var(--padding-more);
+  padding-bottom: var(--padding-more);
+}
+
+// Horizontal Padding
+.padded-horizontally {
+  padding-right: var(--padding);
+  padding-left: var(--padding);
+}
+
+.padded-horizontally-less {
+  padding-right: var(--padding-less);
+  padding-left: var(--padding-less);
+}
+
+.padded-horizontally-more {
+  padding-right: var(--padding-more);
+  padding-left: var(--padding-more);
+}
+
+// Padding top
+.padded-top {
+  padding-top: var(--padding);
+}
+
+.padded-top-less {
+  padding-top: var(--padding-less);
+}
+
+.padded-top-more {
+  padding-top: var(--padding-more);
+}
+
+// Padding bottom
+.padded-bottom {
+  padding-bottom: var(--padding);
+}
+
+.padded-bottom-less {
+  padding-bottom: var(--padding-less);
+}
+
+.padded-bottom-more {
+  padding-bottom: var(--padding-more);
+}
+
+// Set the background-color to set a sidebar back a bit.
+.sidebar {
+  background-color: #f5f5f4;
+}
+
+// Allow the window to be dragged around the desktop by any element in the application.
+.draggable {
+  -webkit-app-region: drag;
+}
+
+// within draggable regions, allow specific elements to be exempted.
+.not-draggable {
+  -webkit-app-region: no-drag;
+}
+
+// Clearfix
+.clearfix {
+  @include clearfix();
+}

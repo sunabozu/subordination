@@ -1,0 +1,48 @@
+.video-container {
+	position: relative;
+	background: var(--window-color);
+	// flex: 2 0 0;
+	cursor: inherit;
+	min-height: 250px;
+}
+
+.video-container canvas {
+	width: 100%;
+	height: 100%;
+	cursor: inherit;
+}
+
+.video-box {
+	position: absolute;
+	cursor: inherit;
+}
+
+.video-controls {
+	display: flex;
+	position: absolute;
+	bottom: 0;
+	border-top: var(--border-thick);
+	height: 24px;
+	width: 100%;
+	box-shadow: inset 0 1px 0 #f5f4f5;
+
+	& button {
+		border-radius: 0;
+		border-left: 0;
+		border-bottom: 0;
+		border-top: 0;
+	}
+
+	& input[type="range"] {
+		flex-grow: 1;
+		align-self: center;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
+	& label {
+		align-self: center;
+		margin-bottom: 0;
+		margin-right: 5px;
+	}
+}

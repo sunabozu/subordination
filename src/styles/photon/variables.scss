@@ -1,0 +1,209 @@
+//
+// Variables
+// --------------------------------------------------
+
+// OS X
+:root body[platform=darwin] {
+	--window-color: #ececec;
+	--window-color-active-toolbar: linear-gradient(#e7e7e7, #c9c9c9);
+	--window-color-inactive-toolbar: linear-gradient(#f3f3f3, #fbfbfb);
+	--panel-color: #e2e2e2;
+
+	--active-color: #2f55d2;
+	--active-color-list: var(--window-color);
+	--primary-color: #388df8;
+	--chrome-color: #fff;
+	--gray-color: #333;
+
+	--btn-default-bg: linear-gradient(#fcfcfc, #f1f1f1);
+	--btn-primary-bg: linear-gradient(#6eb4f7, #1a82fb);
+
+	--left-panel-bg: #323333;
+	--left-panel-color: var(--dark-border-color);
+	--project-item-filter: brightness(.8);
+	--project-item-active-filter: brightness(1.1);
+	--project-item-bg: #464847;
+	--project-item-active-color: var(--dark-border-color);
+	--project-item-color: var(--dark-border-color);
+	--graph-bg-stroke: #3e4040;
+	--default-color: #fff;
+	--active-unfocused-color: #dcdcdc;
+	--trans-color: var(--active-color);
+
+	--border-color: #ddd;
+	--border-standard: 1px solid var(--border-color);
+	--border-thick: 2px solid var(--border-color);
+
+	--dark-border-color: #c2c0c2;
+	--border-dark: 1px var(--dark-border-color) solid;
+
+	--darker-bottom-border-color: #a19fa1;
+	--toolbar-border-color: #939293;
+	--tab-color-bottom: #462af7;
+
+	--tab-linear-gradiend: linear-gradient(#706f70, #666566);
+
+	--default-border-radius: 4px;
+
+	--padding: 10px;
+	--padding-mini: 3px;
+	--padding-less: 5px;
+	--padding-more: 20px;
+
+	--focus-input-color: #6db3fd;
+	--popover-shadow: 2px 2px 20px rgba(0,0,0,0.2);
+	--volume-shadow: 0 -1px 5px rgba(0,0,0,0.1);
+	--box-shadow-focus: 3px 3px 0 var(--focus-input-color),
+							-3px -3px 0 var(--focus-input-color),
+							-3px 3px 0 var(--focus-input-color),
+							3px -3px 0 var(--focus-input-color);
+	--box-shadow-focus-anim: 10px 10px 0 var(--focus-input-color),
+							-10px -10px 0 var(--focus-input-color),
+							-10px 10px 0 var(--focus-input-color),
+							10px -10px 0 var(--focus-input-color);
+
+	--font-size-default: 13px;
+	--default-font-family: BlinkMacSystemFont;
+	--default-font-size: 13px;
+
+	--header-height: 40px;
+	--header-margin-top: 4px;
+	--header-margin-bottom: 3px;
+	--header-padding-top: 5px;
+	--toolbar-min-height: 22px;
+}
+
+// Windows
+:root body[platform=win32] {
+	--window-color: #f0f0f0;
+	--panel-color: none;
+
+	--active-color: #cde3f8;
+	--active-color-list: #cde3f8;
+	--primary-color: #388df8;
+	--chrome-color: #fff;
+	--gray-color: #333;
+
+	--btn-default-bg: #cccccc;
+	--btn-primary-bg: #cccccc;
+
+	--left-panel-bg: var(--window-color);
+	--left-panel-color: white;
+	--project-item-filter: brightness(1.1);
+	--project-item-active-filter: brightness(.9);
+	--project-item-bg: #ededed;
+	--project-item-active-color: #000;
+	--project-item-color: var(--darker-bottom-border-color);
+	--graph-bg-stroke: #3e4040;
+	--default-color: #fff;
+	--active-unfocused-color: #dcdcdc;
+	--trans-color: #0078d7;
+
+	--border-color: #ddd;
+	--border-standard: 1px solid var(--border-color);
+	--border-thick: 2px solid var(--border-color);
+
+	--dark-border-color: #c2c0c2;
+	--border-dark: 1px var(--dark-border-color) solid;
+
+	--darker-bottom-border-color: #a19fa1;
+	--toolbar-border-color: #939293;
+	--tab-color-bottom: #462af7;
+
+	--tab-linear-gradiend: linear-gradient(#706f70, #666566);
+
+	--default-border-radius: 0px;
+
+	--padding: 10px;
+	--padding-mini: 3px;
+	--padding-less: 5px;
+	--padding-more: 20px;
+
+	--focus-input-color: #0078d7;
+	--popover-shadow: 2px 2px 20px rgba(0,0,0,0.2);
+	--volume-shadow: 0 -1px 5px rgba(0,0,0,0.1);
+	--box-shadow-focus: 2px 2px 0 var(--focus-input-color),
+							-2px -2px 0 var(--focus-input-color),
+							-2px 2px 0 var(--focus-input-color),
+							2px -2px 0 var(--focus-input-color);
+	--box-shadow-focus-anim: 2px 2px 0 var(--focus-input-color),
+							-2px -2px 0 var(--focus-input-color),
+							-2px 2px 0 var(--focus-input-color),
+							2px -2px 0 var(--focus-input-color);
+
+	--font-size-default: 13px;
+	--default-font-family: "Segoe UI";
+	--default-font-size: 13px;
+
+	--header-height: 29px;
+	--header-margin-top: 0px;
+	--header-margin-bottom: 0px;
+	--header-padding-top: 0px;
+	--toolbar-min-height: 28px;
+}
+
+// Try to use the system's font on whatever platform the user is on.
+// $font-family-default: system, -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, "Segoe UI", sans-serif !default;
+// $font-size-default: 13px !default;
+$font-weight: 500 !default;
+$font-weight-bold: 700 !default;
+$font-weight-light: 300 !default;
+$line-height-default: 1.6 !default;
+
+
+// Colors
+// --------------------------------------------------
+
+// Main colors
+// $primary-color: #388df8 !default;
+// $chrome-color:  #fff !default;
+// $window-color: #ececec !default;
+// $window-color-active-toolbar: linear-gradient(#e7e7e7, #c9c9c9);
+// $window-color-inactive-toolbar: linear-gradient(#f3f3f3, #fbfbfb);
+// $panel-color: #e2e2e2 !default;
+// $left-panel-color: #323333;
+
+// Buttons
+// $btn-default-bg: linear-gradient(#fcfcfc, #f1f1f1);
+// $btn-primary-bg: linear-gradient(#6eb4f7, #1a82fb);
+// $btn-primary-bg-pressed: linear-gradient(darken(#6eb4f7, 10%), darken(#1a82fb, 10%));
+
+// Copy
+// $gray-color: #333 !default;
+
+// Borders
+// $border-color: #ddd !default;
+// $dark-border-color: #c2c0c2 !default;
+// $darker-bottom-border-color: #a19fa1 !default;
+// $toolbar-border-color: #939293 !default;
+
+// Action colors
+// $default-color:  #fff !default;
+$positive-color: #34c84a !default;
+$negative-color: #fc605b !default;
+$warning-color: #fdbc40 !default;
+
+// Shades
+// $dark-color: #57acf5 !default;
+
+// Focus and active colors
+// $active-color: #2f55d2;
+// $active-color: #0295ff;
+// $active-color: #fe6358;
+// $tab-color-bottom: #462af7;
+// $tab-linear-gradiend: linear-gradient(#706f70, #666566);
+
+// $active-unfocused-color: #dcdcdc;
+// $focus-input-color: #6db3fd  !default;
+
+// Other
+// --------------------------------------------------
+
+// Border radius
+// $default-border-radius: 4px;
+
+// Padding
+// $padding: 10px;
+// $padding-mini: 3px;
+// $padding-less: 5px;
+// $padding-more: 20px;

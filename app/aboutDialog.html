@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="dist/css/index.css">
+		<style>
+		*:focus {
+			outline: none;
+		}
+		body {
+			padding: 10px 0 10px 0;
+			text-align: center;
+		}
+		frame {
+			margin-bottom: 10px;
+			margin-top: 10px;
+		}
+		button {
+			margin-top: 10px;
+			margin-right: 10px;
+		}
+		</style>
+	</head>
+	<body>
+		<img id="icon" style="width: 64px; height: 64px;" />
+		<div id="title" style="font-weight: bold; font-size: 14px;"></div>
+		<div id="version"></div>
+		<div>Copyright © 2016 troorl</div>
+		<iframe id="credits" width="100%"></iframe>
+		<button id="btn" class="btn btn-mini btn-primary" style="float: right;">Close</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+	'use strict'
+
+	document.body.setAttribute('platform', process.platform)
+
+	const remote = require('electron').remote
+	const path = require('path')
+
+	document.title = `About ${remote.app.getName()}`
+
+	const icon = document.querySelector('#icon')
+	const title = document.querySelector('#title')
+	const version = document.querySelector('#version')
+	const credits = document.querySelector('#credits')
+	const btn = document.querySelector('#btn')
+
+	const credits_path = path.join(path.dirname(remote.app.getPath('exe')), 'Credits.html')
+	const icon_path = path.join(path.dirname(remote.app.getPath('exe')), 'icon.png')
+
+	icon.setAttribute('src', icon_path)
+	title.innerText = remote.app.getName()
+	version.innerText = remote.app.getVersion()
+	credits.setAttribute('src', credits_path)
+
+	function onClose() {
+		remote.getCurrentWindow().close()
+	}
+
+	btn.addEventListener('click', onClose)
+	window.addEventListener('keydown', (e) => {
+		if(e.keyCode == 27)
+			onClose()
+	})
+
+}, false)
+</script>
+	</body>
+</html>

@@ -1,0 +1,74 @@
+.dialog {
+
+	display: flex;
+	position: relative;
+	flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+	border-top: 0;
+  border-radius: 2px;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.3);
+	padding: 15px;
+	background: var(--window-color);
+
+	& div {
+		display: flex;
+	}
+
+	& .form-group {
+		flex-direction: row;
+		align-content: center;
+		align-items: center;
+		justify-content: space-between;
+		flex-grow: 1;
+	}
+
+	& .form-control {
+		width: auto;
+		margin-left: 4px;
+	}
+
+	& select {
+		flex-grow: 0;
+	}
+
+	& label {
+		margin-bottom: 0px;
+	}
+}
+
+.dialog:before {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: "";
+	z-index: -1;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 0.5;
+	}
+}
+
+.modal-transition {
+	position: fixed;
+	display: flex;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 1000;
+	width: min-content;
+
+	transition: all .25s ease;
+	top: 0px;
+}
+
+.modal-enter, .modal-leave {
+	transform: translateY(-100%);
+}

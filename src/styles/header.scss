@@ -1,0 +1,68 @@
+header.toolbar-header {
+	width: 100%;
+	height: var(--header-height);
+	padding-top: var(--header-padding-top);
+	// padding-left: 70px;
+	// padding-right: 5px;
+	min-height: var(--header-height);
+	-webkit-app-region: drag;
+
+	& .btn-default {
+		position: relative;
+	}
+}
+
+header button, .btn, .btn-default, .btn-group {
+	-webkit-app-region: no-drag;
+}
+
+.left-panel header.toolbar-header {
+	display: flex;
+	justify-content: flex-end;
+	padding-left: 10px;
+	padding-right: 10px;
+	background: transparent;
+	border-color: transparent;
+	box-shadow: inset 0 1px 0 transparent;
+	transition: all .2s;
+
+	& .toolbar-actions {
+		padding-right: 0;
+	}
+}
+
+body[platform=win32] .left-panel header.toolbar-header {
+	padding-right: 0px;
+	padding-left: 0px;
+	justify-content: flex-start;
+}
+
+body[platform=win32] header .toolbar-actions {
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-left: 0px;
+}
+
+.mini header.toolbar-header {
+	min-height: 75px;
+	padding-top: 35px;
+	justify-content: center;
+
+	& .toolbar-actions {
+		padding-left:0;
+
+		& .btn {
+			margin-left: 0;
+		}
+	}
+}
+
+.central-panel header.toolbar-header {
+	display: flex;
+	justify-content: center;
+}
+
+body[platform=win32] header .btn {
+	box-shadow: none;
+	height: 28px;
+}

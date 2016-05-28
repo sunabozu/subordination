@@ -1,0 +1,118 @@
+//
+// Buttons.css
+// --------------------------------------------------
+
+.btn {
+  display: inline-block;
+  padding: 3px 8px;
+  margin-bottom: 0;
+  // font-size: $font-size-default;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: default;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: var(--default-border-radius);
+  box-shadow: 0 1px 1px rgba(0,0,0,.06);
+  -webkit-app-region: no-drag;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+body[platform=darwin][inactive=true] .toolbar .btn,
+body[platform=darwin][inactive=true] .tabs .btn.active {
+	opacity: .5;
+}
+
+.btn-mini {
+  padding: 0px 6px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.btn-large {
+  padding: 6px 12px;
+}
+
+.btn-form {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+// Normal buttons
+.btn-default, .btn-white {
+  color: var(--gray-color);
+  background: var(--btn-default-bg);
+
+  &:enabled:active {
+    background-color: #ddd;
+    background-image: none;
+  }
+}
+
+body[platform=darwin] .btn-default, body[platform=darwin] .btn-white  {
+	border-top-color: var(--dark-border-color);
+  border-right-color: var(--dark-border-color);
+  border-bottom-color: var(--darker-bottom-border-color);
+  border-left-color: var(--dark-border-color);
+}
+
+// Button variations
+body[platform=darwin] .btn-primary {
+  color: #fff;
+	border-color: var(--primary-color);
+  border-bottom-color: darken(#388df8, 15%);
+  text-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+
+// For primary buttons
+.btn-primary {
+  background: var(--btn-primary-bg);
+
+  &:enabled:active {
+    background: var(--btn-primary-bg);
+		-webkit-filter: brightness(0.8);
+  }
+}
+
+body[platform=darwin][inactive=true] .btn-primary {
+	color: var(--gray-color);
+  border-top-color: var(--dark-border-color);
+  border-right-color: var(--dark-border-color);
+  border-bottom-color: var(--darker-bottom-border-color);
+  border-left-color: var(--dark-border-color);
+	background: var(--btn-default-bg);
+}
+
+// Icons in buttons
+.btn .icon {
+  float: left;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  color: #737475;
+  font-size: 14px;
+  line-height: 1;
+}
+
+// Add the margin next to the icon if there is text in the button too
+.btn .icon-text {
+  margin-right: 5px;
+}
+
+// This utility class add a down arrow icon to the button
+.btn-dropdown {
+	font-size: calc(var(--font-size-default) - 1px);
+
+	&:after {
+	  font-family: "photon-entypo";
+	  margin-left: 5px;
+	  content: '\e873';
+	}
+}

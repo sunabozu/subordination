@@ -1,0 +1,74 @@
+//
+// Lists.scss
+// --------------------------------------------------
+
+// List groups
+// These are to be used when shows list items that contain
+// more substanstial amounts of information. (headings, images, text, etc.)
+
+.list-group {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+
+  * {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.list-group-item {
+  padding: 10px;
+  // font-size: $font-size-default;
+  color: #414142;
+  border-top: var(--border-standard);
+
+  &:first-child {
+    border-top: 0;
+  }
+
+	&:focus {
+		outline: none;
+	}
+
+  &.active, &:focus {
+		background: var(--active-color-list);
+	}
+
+  // &.active .list-item-indicator,
+  // &.selected .list-item-indicator {
+  //   background-color: $active-unfocused-color;
+  // }
+
+  &.active .list-item-indicator,
+  &:focus .list-item-indicator,
+  // `.selected` is deprecated. Use `.active` instead.
+  &.selected:focus .list-item-indicator {
+    background-color: var(--active-color);
+  }
+}
+
+.list-group-header {
+  padding: 10px;
+}
+
+// Media objects in lists
+.media-object {
+  margin-top: 3px;
+}
+
+.media-object.pull-left {
+  margin-right: 10px
+}
+
+.media-object.pull-right {
+  margin-left: 10px
+}
+
+.media-body {
+  overflow: hidden;
+}

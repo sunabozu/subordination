@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="dist/css/index.css">
+		<style>
+			label {
+				margin-top: 5px;
+			}
+		</style>
+	</head>
+	<body style="padding-left: 10px; padding-right: 10px;">
+		<div id="b-block" style="text-align: center;">
+			<button id="download-btn" class="btn btn-default">Download video module</button><br />
+			<label id="desc" style="word-wrap: break-word; white-space: normal;">In order to load video files you need to download Webchimera video module</label>
+		</div>
+		<div id="d-block" style="display: none;">
+			<progress type="range" value="0" style="width: 100%;" id="progress"></progress><br />
+			<label id="status">Downloading...</label>
+		</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+	'use strict'
+
+	document.body.setAttribute('platform', process.platform)
+
+	const progress = document.querySelector('#progress')
+	const download_btn = document.querySelector('#download-btn')
+	const status = document.querySelector('#status')
+	const desc = document.querySelector('#desc')
+
+	const b_block = document.querySelector('#b-block')
+	const d_block = document.querySelector('#d-block')
+
+	const dm = require('./download_manager')
+	const remote = require('electron').remote
+	const ipc = require('electron').ipcRenderer
+	const path = require('path')
+	const proc = require('child_process')
+	const fs = require('fs')
+
+	function extract(source, dest, callback) {
+		if(process.platform == 'darwin') {
+			proc.exec(`tar -zxvf '${source}' -C '${dest}'`, callback)
+		}
+
+		if(process.platform == 'win32') {
+			const unzip = require('unzip')
+
+			fs.createReadStream(source)
+				.pipe(unzip.Extract({path: dest}))
+				.on('close', () => {
+					callback()
+				})
+		}
+	}
+
+	let url = null
+	let temp_path = path.join(remote.app.getPath('temp'), 'webchimera.')
+	const appDir = path.join(remote.app.getPath('appData'), remote.app.getName())
+
+	if(process.platform == 'darwin') {
+		url = 'https://github.com/RSATom/WebChimera.js/releases/download/v0.2.3/WebChimera.js_v0.2.3_electron_v0.37.2_VLC_v2.2.2_x64_osx.tar.gz'
+		temp_path += 'tar.gz'
+	}
+	else {
+		url = 'https://github.com/RSATom/WebChimera.js/releases/download/v0.2.3/WebChimera.js_v0.2.3_electron_v0.37.2_VLC_v2.2.2_ia32_win.zip'
+		temp_path += 'zip'
+	}
+
+	console.log(temp_path)
+	download_btn.addEventListener('click', () => {
+		d_block.style.display = 'block'
+		b_block.style.display = 'none'
+
+		// first remove existing files if any
+		const rm_command = process.platform == 'win32' ?
+			`rmdir '${path.join(appDir, "webchimera.js")}' /s /q` :
+			`rm -r '${path.join(appDir, "webchimera.js")}'`
+		proc.exec(rm_command)
+
+		dm(url, temp_path, (msg) => {
+			switch(msg.type) {
+				case 'start':
+					console.log(msg.size)
+					progress.max = msg.size
+					break
+
+				case 'progress':
+					console.log(msg.current)
+					progress.value = msg.current
+					break
+
+				case 'done':
+					console.log('done')
+					status.innerText = 'Extracting...'
+
+					// now extract
+					extract(temp_path, appDir, (err) => {
+						if(err) {
+							d_block.style.display = 'none'
+							b_block.style.display = 'block'
+
+							desc.innerText = err
+
+							ipc.sendToHost('error', err)
+						} else {
+							console.log('success')
+
+							// write the current version to a file
+							fs.writeFile(path.join(appDir, 'wc_version.txt'), remote.app.WC_VERSION, err => {
+								if(err)
+									ipc.sendToHost('error', err)
+								else
+									ipc.sendToHost('success')
+							})
+						}
+					})
+					break
+
+				case 'error':
+					d_block.style.display = 'none'
+					b_block.style.display = 'block'
+
+					desc.innerText = msg.description
+
+					ipc.sendToHost('error', msg.description)
+					break
+			}
+		})
+	})
+}, false)
+</script>
+	</body>
+</html>

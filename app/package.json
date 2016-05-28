@@ -1,0 +1,28 @@
+{
+  "name": "subordination",
+  "productName": "Subordination",
+  "version": "0.1.0",
+  "author": "troorl <troorl@gmail.com>",
+  "description": "A desktop app for translating and editing subtitles",
+  "license": "MIT",
+  "homepage": "https://github.com/sunabozu/subordination",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunabozu/subordination.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "prepare": "npm i --no-scripts --force"
+  },
+  "dependencies": {
+    "electron-gh-releases": "^2.0.2",
+    "electron-window-state": "^3.0.3",
+    "iso-639-2": "^0.2.0",
+    "opensubtitles-api": "^2.3.0"
+  },
+  "optionalDependencies": {
+    "unzip": "^0.1.11",
+    "wcjs-renderer": "^0.1.10",
+    "windows-shortcuts": "^0.1.4"
+  }
+}

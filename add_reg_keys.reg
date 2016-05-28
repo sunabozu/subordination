@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+[HKEY_CURRENT_USER\SOFTWARE\Classes\.srt]
+@="srt_auto_file"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\srt_auto_file]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\srt_auto_file\shell]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\srt_auto_file\shell\open]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\srt_auto_file\shell\open\command]
+@="\"@exe_path\" \"%1\""

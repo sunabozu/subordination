@@ -1,0 +1,33 @@
+.tab-panel {
+	position: relative;
+	margin-top: 12px;
+}
+
+body[platform=win32] .tab-panel {
+	margin-top: 24px;
+}
+
+.tab-panel .btn-group.tabs {
+	position: absolute;
+	display: flex;
+}
+
+body[platform=darwin] .tab-panel .btn-group.tabs {
+	left: 50%;
+	right: 50%;
+	top: -12px;
+	justify-content: center;
+}
+
+body[platform=win32] .tab-panel .btn-group.tabs {
+	left: -0px;
+	top: -25px;
+	justify-content: left;
+}
+
+.tab-content {
+	display: flex;
+	flex-direction: column;
+	margin-top: 12px;
+	margin-bottom: 16px;
+}

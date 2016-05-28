@@ -1,0 +1,132 @@
+html {
+	min-height: 100%;
+	position: relative;
+}
+
+body {
+	height: 100%;
+	background: var(--window-color);
+}
+
+.main-container {
+	display: flex;
+	flex-direction: row;
+	animation: fade-in .3s ease;
+
+  position: absolute;
+	// top: 40px; //for header
+	top: 0;
+	bottom: 0; //for footer
+	left: 0;
+	right: 0;
+	overflow: hidden;
+}
+
+body[platform=win32] .main-container {
+	border: 1px solid #0078d7;
+}
+
+body[platform=win32][maximized=true] .main-container {
+	border: 0;
+}
+
+body[platform=win32][inactive=true] .main-container {
+	border: 1px solid var(--window-color);
+}
+
+@keyframes fade-in {
+	from {opacity: 0}
+	to {opacity: 1}
+}
+
+.left-panel {
+	display: flex;
+	flex-direction: column;
+	text-overflow: ellipsis;
+	min-width: 190px;
+	background: var(--left-panel-bg);
+	color: var(--left-panel-color);
+	// padding: 0 10px 0 10px;
+
+	&.mini {
+		padding: 0 5px 0 5px;
+	}
+
+	& div {
+		display: flex;
+	}
+}
+
+.central-panel {
+	display: flex;
+	flex-direction: column;
+	// max-width: 400px;
+	min-width: 320px;
+	// flex: 1000 0 0;
+	// width: 300px;
+	// order: 1;
+}
+
+.right-panel {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	min-width: 290px;
+	item:nth-child(2);
+	// order: 2;
+}
+
+body[platform=win32] .right-panel {
+	min-width: 343px;
+}
+
+.splitter-v, .splitter-h {
+	display: flex;
+}
+
+body[platform=darwin] .splitter-v, body[platform=darwin] .splitter-h {
+	background: var(--border-color);
+}
+
+body[platform=win32] .splitter-h {
+	background: var(--border-thick);
+}
+
+.splitter-v {
+	height: 100%;
+	width: 2px;
+	cursor: col-resize;
+
+	body[platform=darwin] &.left-panel-splitter {
+		background: var(--left-panel-bg);
+	}
+
+	body[platform=win32] & {
+		margin-top: calc(var(--header-height) + 1px);
+	}
+}
+
+.splitter-h {
+	width: 100%;
+	height: 2px;
+	cursor: row-resize;
+}
+
+.form-panel {
+	flex-direction: column;
+	background: var(--panel-color);
+	padding: 15px;
+	border-radius: var(--default-border-radius);
+	border: var(--border-standard);
+}
+
+.dropzone {
+	transition: .3s all;
+}
+
+.dropzone-active {
+	opacity: 1;
+	background: green;
+	// -webkit-filter: invert(1);
+	-webkit-filter: grayscale(100%) sepia(100%) hue-rotate(90deg);
+}

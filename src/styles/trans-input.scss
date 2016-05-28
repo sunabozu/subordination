@@ -1,0 +1,12 @@
+#trans-input {
+	min-height: 100px;
+	// height: 100%;
+	// resize: none;
+	border: 0;
+	flex-grow: 1;
+	cursor: inherit;
+}
+
+#trans-input:focus {
+	outline: none;
+}
