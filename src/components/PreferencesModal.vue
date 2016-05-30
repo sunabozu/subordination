@@ -55,6 +55,7 @@ export default {
 			verifyOstCredentials: actions.ost.verifyOstCredentials,
 			setOstSll: actions.ost.setOstSll,
 
+			setAutoUpdates: ({dispatch}, autoUpdates) => dispatch('SET_AUTO_UPDATES', autoUpdates),
 		}
 	},
 
@@ -63,7 +64,9 @@ export default {
 	},
 
 	computed: {
-
+		autoUpdatesParsed() {
+			return this.model.ui.autoUpdates == 0 ? false : true
+		}
 	},
 
 	methods: {
@@ -72,7 +75,7 @@ export default {
 		},
 
 		onDefaultExportPath(path) {
-			console.log(path);
+			console.log(path)
 			this.setDefaultExportPath(path)
 		},
 
@@ -81,7 +84,7 @@ export default {
 		},
 
 		onClose() {
-			console.log('on close');
+			console.log('on close')
 
 			// if(this.isLoginModalOpen)
 			// 	return
@@ -116,6 +119,10 @@ export default {
 			console.log(actions.ost.setOstSll, this.setOstSll)
 			this.setOstSll(e.target.checked)
 		},
+
+		onAutoUpdates(e) {
+			this.setAutoUpdates(e.target.checked ? 1 : 0)
+		}
 	},
 
 	ready() {
@@ -166,6 +173,11 @@ export default {
 							{{lang.name + ' [' + $key + ']'}}
 						</option>
 					</select>
+				</div>
+
+				<div class="form-group">
+					<label>Automatically check for updates:</label>
+					<input type="checkbox" :checked="autoUpdatesParsed" @change="onAutoUpdates"></input>
 				</div>
 			</tab-item>
 

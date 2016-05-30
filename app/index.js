@@ -15,6 +15,8 @@ if(process.platform == 'win32') {
 
 		switch(cmd_arg) {
 			case '--squirrel-install':
+			case '--squirrel-updated':
+				// require('./post_install_win.js').createShortcut(app)
 				require('./post_install_win.js').afterInstall(app)
 				return true
 
@@ -22,12 +24,12 @@ if(process.platform == 'win32') {
 				require('./post_install_win.js').beforeUninstall(app)
 				return true
 
-			case '--squirrel-updated':
 			case '--squirrel-obsolete':
+				app.quit()
 				return true
 
 			case '--squirrel-firstrun':
-				require('./post_install_win.js').createShortcut(app)
+				// require('./post_install_win.js').createShortcut(app)
 				app.first_run = true
 				return false
 
@@ -39,7 +41,7 @@ if(process.platform == 'win32') {
 	}
 
 	if(handleStartupEvent())
-		app.quit()
+		return
 }
 
 // handle the 'open with' option on Mac
@@ -175,30 +177,6 @@ app.on('ready', () => {
 			app.on('open-file', (e, file_path) => {
 				mainWindow.webContents.send('msg-bus', {type: 'open-with', file_path})
 			})
-
-			// check for updates
-			const ghr = require('electron-gh-releases')
-			updater = new ghr({
-				repo: 'sunabozu/subordination',
-				currentVersion: app.getVersion()
-			})
-
-			updater.check((err, status) => {
-				if(err) {
-					console.log(err)
-					return
-				}
-
-				console.log('status:', status)
-
-				if(status)
-					updater.download()
-			})
-
-			updater.on('update-downloaded', (info) => {
-				if(mainWindow)
-					mainWindow.webContents.send('msg-bus', {type: 'update-ready'})
-			})
 		})
 
 		mainWindow.on('blur', () => {
@@ -279,6 +257,32 @@ app.on('ready', () => {
 						e.preventDefault()
 						shell.openExternal(url)
 						return false
+					})
+					break
+
+				case 'check-for-update':
+					// check for updates
+					const ghr = require('electron-gh-releases')
+					updater = new ghr({
+						repo: 'sunabozu/subordination',
+						currentVersion: app.getVersion()
+					})
+
+					updater.check((err, status) => {
+						if(err) {
+							console.log(err)
+							return
+						}
+
+						console.log('status:', status)
+
+						if(status)
+							updater.download()
+					})
+
+					updater.on('update-downloaded', (info) => {
+						if(mainWindow)
+							mainWindow.webContents.send('msg-bus', {type: 'update-ready'})
 					})
 					break
 

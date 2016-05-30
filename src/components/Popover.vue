@@ -7,6 +7,9 @@ export default {
 		header: {},
 		description: {},
 		width: {},
+		arrow: {
+			default: true
+		},
 	},
 
 	computed: {
@@ -33,7 +36,7 @@ export default {
 	},
 
 	ready() {
-		console.log(this.width);
+		console.log(this.width)
 		if(this.width)
 			this.$els.popover.style.width = this.width + 'px'
 
@@ -42,18 +45,23 @@ export default {
 		window.addEventListener('keydown', this.onKeydown)
 
 		// calculate the initial point
-		const bound = this.initiator.getBoundingClientRect()
-		let top = bound.top - this.initiator.clientHeight / 2 - 12
+		if(this.initiator) {
+			const bound = this.initiator.getBoundingClientRect()
+			let top = bound.top - this.initiator.clientHeight / 2 - 12
 
-		// in case it's too low
-		let bottom = document.body.clientHeight - (this.$els.popover.getBoundingClientRect().height + top)
-		if(bottom < 0) {
-			top += bottom - 5
-			this.$els.arrow.style.top = 20 - (bottom - 5) + 'px'
+			// in case it's too low
+			let bottom = document.body.clientHeight - (this.$els.popover.getBoundingClientRect().height + top)
+			if(bottom < 0) {
+				top += bottom - 5
+				this.$els.arrow.style.top = 20 - (bottom - 5) + 'px'
+			}
+
+			this.$el.style.top = top + 'px'
+			this.$el.style.left = bound.left + this.initiator.clientWidth + 14 + 'px'
+		} else { // display it in the center
+			this.$el.style.top = (window.innerHeight - this.$els.popover.getBoundingClientRect().height) / 2 + 'px'
+			this.$el.style.left = (window.innerWidth - this.width) / 2 + 'px'
 		}
-
-		this.$el.style.top = top + 'px'
-		this.$el.style.left = bound.left + this.initiator.clientWidth + 14 + 'px'
 	},
 }
 </script>
@@ -61,7 +69,7 @@ export default {
 <template>
 	<!-- <div > -->
 		<div class="popover arrow-left" @mousedown="insideClick" @contextmenu.stop="" v-el:popover>
-			<div class="arrow" v-el:arrow></div>
+			<div v-if="arrow" class="arrow" v-el:arrow></div>
 			<h1>{{header}}</h1>
 			<div class="light">{{description}}</div>
 			<hr />

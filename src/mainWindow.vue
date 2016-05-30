@@ -26,6 +26,7 @@ import NewTitleModal from './components/NewTitleModal.vue'
 import ProjectPropertiesPopover from './components/ProjectPropertiesPopover.vue'
 import ProjectDeletePopover from './components/ProjectDeletePopover.vue'
 import UrlPopover from './components/UrlPopover.vue'
+import UpdatePopup from './components/UpdatePopup.vue'
 import WindowButtons from './components/WindowButtons.vue'
 
 import Popup from './directives/Popup'
@@ -58,6 +59,7 @@ export default {
 		ProjectPropertiesPopover,
 		ProjectDeletePopover,
 		UrlPopover,
+		UpdatePopup,
 		WindowButtons,
 	},
 
@@ -121,6 +123,8 @@ export default {
 			uploadUrlPopoverInitiator: null,
 			uploadUrlDescription: null,
 			uploadedUrl: null,
+
+			updatePopupShown: false,
 
 			mainMenu: null,
 		}
@@ -561,6 +565,15 @@ export default {
 					console.log('making it visible')
 					this.appIsReady = true // make the main container visible
 
+					// check for updates
+					if(this.state.ui.autoUpdates == 1) {
+						setTimeout(() => {
+							ipc.send('msg-bus', {
+								type: 'check-for-update'
+							})
+						}, 5000)
+					}
+
 					// if the user opens an srt file directly
 					if(remote.app.cmd_arg) {
 						console.log(remote.app.cmd_arg)
@@ -622,13 +635,7 @@ export default {
 					break
 
 				case 'update-ready':
-					const notification = new Notification(`There is a new version of ${remote.app.getName()}`,
-						{body: 'Click here if you want to install it right now'})
-							.onclick = () => {
-								ipc.send('msg-bus', {
-									type: 'install-update'
-							})
-					}
+					this.updatePopupShown = true
 					break
 			}
 		})
@@ -653,6 +660,7 @@ export default {
 				</div>
 			</header>
 			<project-list
+				v-el:project-list
 				:model="state.subfiles"
 				:container-width="state.ui.leftPanelWidth"
 				:sort-by="state.ui.projectSortOrder"
@@ -798,4 +806,11 @@ export default {
 		:url="uploadedUrl"
 		>
 	</url-popover>
+
+	<update-popup
+		v-if="updatePopupShown"
+		transition="central-popup"
+		@closed="updatePopupShown = false"
+		>
+	</update-popup>
 </template>

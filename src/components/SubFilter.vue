@@ -22,7 +22,7 @@ export default {
 					key: 'all'
 				},
 				{
-					text: 'Ready1',
+					text: 'Ready',
 					key: 'ready'
 				}
 			],

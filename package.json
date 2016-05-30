@@ -10,9 +10,11 @@
     "clean": "rm -rf ./installers",
     "dist": "npm run build-release && npm run clean && npm run dist:osx && npm run dist:win",
     "dist:osx": "build --platform=darwin --arch=x64",
-    "dist:win": "build --platform=win32 --arch=ia32",
+    "dist:win": "build --platform=win32 --arch=x64",
     "start": "APP_DEBUG=1 electron ./app",
-		"publish": "npm run clean && build --platform=darwin --arch=x64 --publish onTagOrDraft && build --platform=win32 --arch=ia32 --publish onTagOrDraft"
+		"publish": "npm run clean && npm run publish:osx && npm run publish:win",
+		"publish:osx": "build --platform=darwin --arch=x64 --publish onTagOrDraft",
+		"publish:win": "build --platform=win32 --publish onTagOrDraft"
   },
   "build": {
     "app-bundle-id": "org.subordination",
