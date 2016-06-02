@@ -25,6 +25,7 @@ body > div {
 }
 
 #ad {
+	margin: auto;
 	width: 861px;
 	height: 200px;
 }
