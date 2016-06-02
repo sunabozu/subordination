@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Subordination - a desktop app for translating and editing subtitles</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300,100italic,500' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div id="ad">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3999004794961337"
+     data-ad-slot="2149778178"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<div id="header">
+	<img id="logo" src="https://cdn.rawgit.com/sunabozu/subordination/master/icon.png" />
+	<h2>Translate and edit subtitles with Subordination</h2>
+	<p id="dl"><a class="dl" href="">Download v0.1.1 for Mac</a></p>
+	<div id="main-screenshot"></div>
+</div>
+
+<div id="features">
+	<div class="feature">
+		<h2>Opensource</h2>
+		<p>Subordination is completely free and open, you can use it in any way you want. Feel free to <a href="https://github.com/sunabozu/subordination">contribute</a> your code.</p>
+	</div>
+	<div class="feature">
+		<h2>Automatic updates</h2>
+		<p>The updates come automatically, so you can always have the latest version. The Windows version supports delta updates.</p>
+	</div>
+	<div class="feature">
+		<h2>Opensubtitles</h2>
+		<p>You can upload your translation directly to Opensubtitles.org. There are several <a href="https://github.com/sunabozu/subordination/blob/gh-pages/docs/webchimera.md">requirements</a> though.</p>
+	</div>
+	<div class="feature">
+		<h2>Restoring your session</h2>
+		<p>Subordination automatically saves and restores your project in a state you left it in your previous session.</p>
+	</div>
+	<div class="feature">
+		<h2>Not only for translation</h2>
+		<p>Although the primary focus is on translation, you can shift the timing of your subtitles, add new and edit existing entries.</p>
+	</div>
+	<div class="feature">
+		<h2>Modern technologies</h2>
+		<p>Under the hood Subordination uses <a href="http://electron.atom.io/">Electron</a>, <a href="http://vuejs.org/">Vue.js</a>, <a href="https://github.com/RSATom/WebChimera.js">Webchimera</a>, and other great opensource projects.</p>
+	</div>
+	<div class="feature">
+		<h2>Video synchronisation</h2>
+		<p>Subordination supports <a href="https://wiki.videolan.org/VLC_Features_Formats/">a lot of video formats</a> and allows you to tie your subtitles to a video file. The video module loads separately with your persmission.</p>
+	</div>
+	<div class="feature">
+		<h2>Cross-platform</h2>
+		<p>The application is avaliable in two flavours for OS X and Windows. Both versions are 64-bit and look slightly differently on each platform.</p>
+	</div>
+	<div style="clear: both"></div>
+</div>
+
+<div id="footer">
+	
+</div>
+
+<script type="text/javascript">
+
+(function() {
+	var header = document.querySelector('#header')
+	var screenshot = document.querySelector('#main-screenshot')
+
+	// load and show the main screenshot
+	var loader = new Image()
+	loader.onload = function() {
+		console.log('loaded')
+		screenshot.style.backgroundImage = 'url("schema.png")'
+		screenshot.classList.add('slide-screenshot')
+	}
+
+	loader.src = 'schema.png'
+
+
+	
+
+})()
+
+</script>
+</body>
+</html>
