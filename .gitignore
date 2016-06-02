@@ -1,6 +1,5 @@
 installers/
 .DS_Store
 node_modules/
-app/
 app/dist/
 app/node_modules/
