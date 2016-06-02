@@ -25,6 +25,7 @@ body > div {
 }
 
 #ad {
+	width: 861px;
 	height: 200px;
 }
 
@@ -85,7 +86,7 @@ a.dl {
 		background-size: 600px;
 	}
 
-	#features {
+	#features, #ad {
 		width: 600px;
 	}
 
@@ -101,7 +102,7 @@ a.dl {
 		background-size: 380px;
 	}
 
-	#features {
+	#features, #ad {
 		width: 380px;
 	}
 
