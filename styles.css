@@ -28,7 +28,7 @@ body > div {
 	height: 200px;
 }
 
-#header > * {
+#header > *, #ad > *, #featres > * {
 	margin: auto;
 }
 
@@ -52,17 +52,13 @@ a.dl {
 	width: 861px;
 	height: 471px;
 	margin-top: 20px;
-	background: no-repeat-x top left;
+	background: no-repeat top left;
 	transition: transform .7s ease;
 	transform: translateY(100%);
 }
 
 .slide-screenshot {
 	transform: translateY(0) !important;
-}
-
-#featres > div {
-	margin: auto;
 }
 
 #features {
@@ -85,6 +81,7 @@ a.dl {
 @media (max-width: 900px) {
 	#main-screenshot {
 		width: 600px;
+		height: 328px;
 		background-size: 600px;
 	}
 
@@ -100,6 +97,7 @@ a.dl {
 @media (max-width: 660px) {
 	#main-screenshot {
 		width: 380px;
+		height: 208px;
 		background-size: 380px;
 	}
 
