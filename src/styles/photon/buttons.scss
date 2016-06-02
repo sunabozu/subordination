@@ -68,6 +68,7 @@ body[platform=darwin] .btn-primary {
 	border-color: var(--primary-color);
   border-bottom-color: darken(#388df8, 15%);
   text-shadow: 0 1px 1px rgba(0,0,0,.1);
+	font-weight: 300;
 }
 
 // For primary buttons

@@ -16,7 +16,6 @@ if(process.platform == 'win32') {
 		switch(cmd_arg) {
 			case '--squirrel-install':
 			case '--squirrel-updated':
-				// require('./post_install_win.js').createShortcut(app)
 				require('./post_install_win.js').afterInstall(app)
 				return true
 
@@ -29,7 +28,6 @@ if(process.platform == 'win32') {
 				return true
 
 			case '--squirrel-firstrun':
-				// require('./post_install_win.js').createShortcut(app)
 				app.first_run = true
 				return false
 
@@ -136,7 +134,7 @@ app.on('ready', () => {
 	const appDataPath = path.join(app.getPath('appData'), app.getName())
 	console.log(appDataPath)
 
-	// required by Electron v0.36 on Windows
+	// required by Electron v0.36 (maybe later) on Windows
 	if(process.platform == 'win32')
 		process.env['VLC_PLUGIN_PATH'] = path.join(appDataPath, 'webchimera.js/plugins')
 

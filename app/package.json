@@ -3,9 +3,9 @@
   "productName": "Subordination",
   "version": "0.1.0",
   "author": "troorl <troorl@gmail.com>",
-  "description": "A desktop app for translating and editing subtitles",
+  "description": "A desktop application for translating and editing subtitles",
   "license": "MIT",
-  "homepage": "https://github.com/sunabozu/subordination",
+  "homepage": "http://subordination.cu.cc",
   "repository": {
     "type": "git",
     "url": "https://github.com/sunabozu/subordination.git"
@@ -22,7 +22,6 @@
   },
   "optionalDependencies": {
     "unzip": "^0.1.11",
-    "wcjs-renderer": "^0.1.10",
-    "windows-shortcuts": "^0.1.4"
+    "wcjs-renderer": "^0.1.10"
   }
 }

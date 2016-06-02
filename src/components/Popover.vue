@@ -22,7 +22,7 @@ export default {
 		},
 
 		onClose(e) {
-			console.log(e);
+			console.log(e)
 			window.removeEventListener('mousedown', this.onClose)
 			window.removeEventListener('resize', this.onClose)
 			window.removeEventListener('keydown', this.onKeydown)

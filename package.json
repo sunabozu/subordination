@@ -17,10 +17,11 @@
 		"publish:win": "build --platform=win32 --publish onTagOrDraft"
   },
   "build": {
+		"productName": "Subordination",
     "app-bundle-id": "org.subordination",
     "app-category-type": "public.app-category.education",
 		"app-copyright": "Copyright © 2016 troorl",
-    "compression": "store",
+    "compression": "maximum",
     "ignore": "app/node_modules/webchimera.js",
 		"extend-info": "build/info.plist",
 		"extraResources": ["Credits.html", "icon.png", "add_reg_keys.reg", "remove_reg_keys.reg"],
@@ -28,8 +29,9 @@
       "identity": "troorl"
     },
 		"win": {
-			"iconUrl": "https://github.com/sunabozu/subordination/blob/master/build/icon.ico",
-			"loadingGif": "build/instal-splash.png"
+			"iconUrl": "https://raw.githubusercontent.com/sunabozu/subordination/master/build/icon.ico",
+			"loadingGif": "build/instal-splash.gif",
+			"remoteReleases": "https://github.com/sunabozu/subordination"
 		}
   },
   "directories": {

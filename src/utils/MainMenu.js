@@ -111,7 +111,11 @@ function go(command) {
 			break
 
 		case 'visit-website':
-			shell.openExternal('http://electron.atom.io')
+			shell.openExternal('http://subordination.cu.cc')
+			break
+
+		case 'report-bug':
+			shell.openExternal('https://github.com/sunabozu/subordination/issues')
 			break
 	}
 }
@@ -353,6 +357,10 @@ export function createApplicationMenu(vue_instance) {
 			{
 				label: 'Visit the website...',
 				click() { go('visit-website') }
+			},
+			{
+				label: 'Report a bug...',
+				click() { go('report-bug') }
 			},
 		]
 	}

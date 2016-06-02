@@ -9,4 +9,4 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Classes\srt_auto_file\shell\open]
 
 [HKEY_CURRENT_USER\SOFTWARE\Classes\srt_auto_file\shell\open\command]
-@="\"@exe_path\" \"%1\""
+@="\"@exe_path\" \"--processStart\" \"Subordination.exe\" \"-a=%1\""
