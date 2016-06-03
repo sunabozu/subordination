@@ -97,7 +97,7 @@ export default {
 		'upload-to-ost': function(project, sub_path) {
 			if(this.key !== project)
 				return
-			
+
 			const currentProject = this.projects[project]
 
 			this.wait = true
