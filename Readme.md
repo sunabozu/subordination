@@ -1,12 +1,12 @@
 ## Subordination
 
-Subordination is a desktop application for translating and editing subtitles. Currently only SRT is supported.
+Subordination is a desktop application for translating and editing subtitles. Currently only SRT format is supported.
 
 ### Building from source
 
 Subordination is an [Electron](http://electron.atom.io/) app. It's written in JavaScript with extensive use of [Vue.js](http://vuejs.org/), [Vuex](https://github.com/vuejs/vuex) and highly customised version of [Photon](http://photonkit.com/). Note that you need to have [npm](https://www.npmjs.com/) and [git](https://git-scm.com/) installed on you machine. First get the source code:
 
-```
+```bash
 git clone https://github.com/sunabozu/subordination.git
 cd subordination
 ```
@@ -15,7 +15,7 @@ Now install the dependencies for development and runtime. Note that the `webchim
 
 Also note that Subordination uses a project structure with two `package.json` files. [See more for details](https://github.com/electron-userland/electron-builder).
 
-```
+```bash
 cd app
 npm run prepare
 cd ..
@@ -24,14 +24,14 @@ npm install
 
 Now you can build and launch a debug version:
 
-```
+```bash
 npm run build-dev
 npm start
 ```
 
 Or you can try to build a full-fledged binary. All the executables are stored inside the `installers` folder.
 
-```
+```bash
 npm run build-release
 npm run dist:osx
 npm run dist:win
