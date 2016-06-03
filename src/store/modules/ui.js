@@ -6,7 +6,7 @@ export default {
 	state: {
 		leftPanelWidth: 250,
 		centralPanelWidth: 300,
-		videoViewHeight: 100,
+		videoViewHeight: 400,
 
 		projectSortOrder: 0, // 0 - by export name, 1 - by usage
 

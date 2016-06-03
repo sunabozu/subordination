@@ -63,16 +63,13 @@ const should_quit = app.makeSingleInstance((argv) => {
 if(should_quit)
 	app.quit()
 
-// const menu = electron.menu
 const ipc = electron.ipcMain
 
 const windowStateKeeper = require('electron-window-state')
 
 const fs = require('fs')
 const path = require('path')
-// const shell = electron.shell
 
-app.commandLine.appendSwitch('enable-transparent-visuals')
 app.WC_VERSION = '0.2.3'
 
 app.on('ready', () => {
@@ -87,7 +84,6 @@ app.on('ready', () => {
 		minWidth: 860,
 		minHeight: 380,
 		frame: process.platform == 'win32' ? false : true,
-		// transparent: true,
 		textAreasAreResizable: false,
 		titleBarStyle: 'hidden-inset',
 	})
@@ -154,7 +150,6 @@ app.on('ready', () => {
 		mainWindow.webContents.on('did-finish-load', () => {
 			// load state from disk
 			fs.readFile(path.join(appDataPath, 'state.json'), 'utf8', function(err, data) {
-				// let result = null
 
 				if(err) {
 					console.log(err)
