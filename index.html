@@ -8,13 +8,25 @@ body {
 	padding: 0;
 	margin: 0;
 	text-align:center;
-	font: 300 1.1em 'Roboto', sans-serif;
+	font: 300 1em "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
+	color: #545454;
 	background: #fff;
 }
 
-#main {
+p {
+	line-height: 140%;
+}
+
+body > div, #features {
 	margin: auto;
+	margin-top: 30px;
 	width: 861px;
+}
+
+body > span {
+	display: block;
+	width: 100%;
+	background: #F3F8FB;
 }
 
 #main > div {
@@ -26,8 +38,10 @@ body {
 	width: 861px !important;
 	background: #fff;
 	top: 0;
-	left: auto;
-
+	left: 50%;
+  transform: translate(-50%, 0);
+	-webkit-transform: translate(-50%, 0);
+	margin-top: 0;
 	padding: 10px 0 10px 0;
 	text-align: right;
 	z-index: 999;
@@ -39,25 +53,32 @@ body {
 }
 
 .menu-scroll {
-	border-bottom: 1px solid #B4AFAF;
+	border-bottom: 1px solid #ECECEC;
 }
 
 h2 {
 	font-size: 1.2em;
 	font-weight: 300;
-	color: #B4AFAF;
+	color: #9F9E9E;
 }
 
 a, a:visited {
-	color: #B4AFAF;
+	color: #E76B6B;
 }
 
 a:hover {
 	opacity: .9;
 }
 
+a.dl {
+	padding: 5px;
+	text-decoration: none;
+	color: #fff;
+	background: #E76B6B;
+}
+
 #ad {
-	height: 200px;
+	height: 170px;
 	margin-top: 43px;
 	text-align: center;
 }
@@ -69,13 +90,6 @@ a:hover {
 #logo {
 	width: 86px;
 	heigh: 86px;
-}
-
-a.dl {
-	text-decoration: none;
-	color: white;
-	background: #E76B6B;
-	padding: 5px;
 }
 
 #main-screenshot {
@@ -92,61 +106,126 @@ a.dl {
 }
 
 #features {
-	width: 861px;
-	margin: auto;
-	padding-top: 10px;
+	margin-top: 30px;
 }
 
 .feature {
 	width: 287px;
+	height: 200px;
 	float: left;
-
 }
 
 .feature p {
+	text-align: justify;
+	padding-right: 20px;
+}
+
+.feature:last-child p {
+	background: red;
+	padding-right: 0 !important;
+}
+
+#overview > div {
+	width: 100%;
+	height: 300px;
+	margin-top: 30px;
+}
+
+#overview > div > * {
+	float: left;
+}
+
+.image, .desc {
+	width: 50%;
+}
+
+.desc {
+	top: 50%;
+	position: relative;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+}
+
+.desc h2 {
+	margin-top: 0;
+}
+
+.image {
+	text-align: left;
+}
+
+.right .image {
+	text-align: right;
+}
+
+.image img {
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+}
+
+#footer {
+	background: #ECECEC;
 	text-align: left;
 	padding: 10px;
 }
 
 @media (max-width: 900px) {
 	#main-screenshot {
-		width: 600px;
 		height: 328px;
 		background-size: 600px;
 	}
 
-	#main, #menu {
+	body > div, #menu, #features {
 		width: 600px !important;
 	}
 
 	.feature {
-		width: 300px;
+		width: 200px;
+	}
+
+	#overview > div {
+		height: 200px;
+	}
+
+	.image img {
+		width: 200px;
+		height: 200px;
 	}
 }
 
 @media (max-width: 660px) {
 	#main-screenshot {
-		width: 380px;
 		height: 208px;
 		background-size: 380px;
 	}
 
-	#main, #menu {
+	body > div, #menu, #features {
 		width: 380px !important;
 	}
 
 	.feature {
 		width: 380px;
 	}
+
+	#overview > div {
+		height: 170px;
+	}
+
+	.image img {
+		width: 170px;
+		height: 170px;
+	}
+	}
 }
 	</style>
 </head>
 <body>
-<div id="main">
 	<div id="home"></div>
 	<div id="menu">
 		<a id="m-home" href="#home">Home</a>
-		<a id="m-features" href="#features">Features</a>
+		<a id="m-overview" href="#overview">Overview</a>
+		<a id="m-preview" href="#preview">Screenshots</a>
 	</div>
 
 	<div id="ad">
@@ -163,55 +242,116 @@ a.dl {
 
 	<div id="header">
 		<img id="logo" src="https://cdn.rawgit.com/sunabozu/subordination/master/icon.png" />
-		<h2>Translate and edit subtitles with Subordination</h2>
+		<p>Translate and edit subtitles with Subordination</p>
 		<p id="dl"><a class="dl" href="">Download v0.1.1 for Mac</a></p>
 		<div id="main-screenshot"></div>
 	</div>
 
-	<div id="features">
-		<div class="feature">
-			<h2>Opensource</h2>
-			<p>Subordination is completely free and open, you can use it in any way you want. Feel free to <a href="https://github.com/sunabozu/subordination">contribute</a> your code.</p>
+	<span>
+		<div id="features">
+			<div class="feature">
+				<h2>Opensource</h2>
+				<p>Subordination is completely free and open, you can use it in any way you want. Feel free to <a href="https://github.com/sunabozu/subordination">contribute</a> your code.</p>
+			</div>
+			<div class="feature">
+				<h2>Modern technologies</h2>
+				<p>Under the hood Subordination uses <a href="http://electron.atom.io/">Electron</a>, <a href="http://vuejs.org/">Vue.js</a>, <a href="https://github.com/RSATom/WebChimera.js">Webchimera</a>, and other great opensource projects.</p>
+			</div>
+			<div class="feature">
+				<h2>Translate and edit</h2>
+				<p>Although the primary focus is on translation, you can shift the timing of your subtitles, add new and edit existing entries.</p>
+			</div>
+			<p style="clear:both;"></p>
 		</div>
-		<div class="feature">
-			<h2>Automatic updates</h2>
-			<p>The updates come automatically, so you can always have the latest version. The Windows version supports delta updates.</p>
+	</span>
+
+
+	<div id="overview">
+		<div>
+			<div class="image">
+				<img src="screen_mac_preview.png" />
+			</div>
+			<div class="desc">
+				<h2>Automatic updates</h2>
+				<p>The updates come automatically, so you can always have the latest version. The Windows version supports delta updates.</p>
+			</div>
+			<p style="clear:both;"></p>
 		</div>
-		<div class="feature">
-			<h2>Opensubtitles</h2>
-			<p>You can upload your translation directly to Opensubtitles.org. There are several <a href="https://github.com/sunabozu/subordination/blob/gh-pages/docs/webchimera.md">requirements</a> though.</p>
+
+		<div class="right">
+			<div class="desc">
+				<h2>Opensubtitles</h2>
+				<p>You can upload your translation directly to Opensubtitles.org. There are several <a href="https://github.com/sunabozu/subordination/blob/gh-pages/docs/webchimera.md">requirements</a> though.</p>
+			</div>
+			<div class="image">
+				<img src="screen_mac_preview.png" />
+			</div>
+			<p style="clear:both;"></p>
 		</div>
-		<div class="feature">
-			<h2>Restoring your session</h2>
-			<p>Subordination automatically saves and restores your project in a state you left it in your previous session.</p>
+
+		<div>
+			<div class="image">
+				<img src="screen_mac_preview.png" />
+			</div>
+			<div class="desc">
+				<h2>Restoring your session</h2>
+				<p>Subordination automatically saves and restores your project in a state you left it in your previous session.</p>
+			</div>
+			<p style="clear:both;"></p>
 		</div>
-		<div class="feature">
-			<h2>Not only for translation</h2>
-			<p>Although the primary focus is on translation, you can shift the timing of your subtitles, add new and edit existing entries.</p>
+
+		<div class="right">
+			<div class="desc">
+				<h2>Cross-platform</h2>
+				<p>The application is avaliable in two flavours for OS X and Windows. Both versions are 64-bit and look slightly differently on each platform.</p>
+			</div>
+			<div class="image">
+				<img src="screen_mac_preview.png" />
+			</div>
+			<p style="clear:both;"></p>
 		</div>
-		<div class="feature">
-			<h2>Modern technologies</h2>
-			<p>Under the hood Subordination uses <a href="http://electron.atom.io/">Electron</a>, <a href="http://vuejs.org/">Vue.js</a>, <a href="https://github.com/RSATom/WebChimera.js">Webchimera</a>, and other great opensource projects.</p>
+
+		<div>
+			<div class="image">
+				<img src="screen_mac_preview.png" />
+			</div>
+			<div class="desc">
+				<h2>Video synchronisation</h2>
+				<p>Subordination supports <a href="https://wiki.videolan.org/VLC_Features_Formats/">a lot of video formats</a> and allows you to tie your subtitles to a video file. The video module loads separately with your persmission.</p>
+			</div>
+			<p style="clear:both;"></p>
 		</div>
-		<div class="feature">
-			<h2>Video synchronisation</h2>
-			<p>Subordination supports <a href="https://wiki.videolan.org/VLC_Features_Formats/">a lot of video formats</a> and allows you to tie your subtitles to a video file. The video module loads separately with your persmission.</p>
+
+		<div class="right">
+			<div class="desc">
+				<h2>Projects</h2>
+				<p>You can work on several projects simultaneously. Switch between them by a single click - they all are listed on the left panel.</p>
+			</div>
+			<div class="image">
+				<img src="screen_mac_preview.png" />
+			</div>
+			<p style="clear:both;"></p>
 		</div>
-		<div class="feature">
-			<h2>Cross-platform</h2>
-			<p>The application is avaliable in two flavours for OS X and Windows. Both versions are 64-bit and look slightly differently on each platform.</p>
-		</div>
-		<div class="feature">
-			<h2>Projects</h2>
-			<p>You can work on several projects simultaneously. Switch between them by a single click - they all are listed on the left panel.</p>
-		</div>
-		<div style="clear: both"></div>
+		<p style="clear:both;"></p>
+	</div>
+
+
+	<div id="links">
+		<h2>Links</h2>
+		<p>
+			<a class="dl" href="https://github.com/sunabozu/subordination/releases">See all available downloads</a>
+		</p>
+		<p>
+			<a class="dl blue" href="https://github.com/sunabozu/subordination/issues">Report a bug or post a feature request</a>
+		</p>
+		<p>
+			<a class="dl yellow" href="https://github.com/sunabozu/subordination">Build it from sources and contribute to the project</a>
+		</p>
 	</div>
 
 	<div id="footer">
-
+		Copyright
 	</div>
-</div>
 
 <script type="text/javascript">
 
@@ -244,6 +384,8 @@ a.dl {
 	// animate scrolling
 	var home = document.querySelector('#home')
 	var features = document.querySelector('#features')
+	var overview = document.querySelector('#overview')
+	var preview = document.querySelector('#preview')
 
 	function animate(to, time, offset, prop) {
     var elem = document.body
@@ -269,9 +411,13 @@ a.dl {
 		return false
 	}
 
-	document.querySelector('#m-features').onclick = function(e) {
+	document.querySelector('#m-overview').onclick = function(e) {
+		animate(overview, 500, 43, true)
+		return false
+	}
 
-		animate(features, 500, 30, true)
+	document.querySelector('#m-preview').onclick = function(e) {
+		animate(preview, 500, 43, true)
 		return false
 	}
 
