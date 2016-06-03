@@ -9,6 +9,37 @@ body {
 	margin: 0;
 	text-align:center;
 	font: 300 1.1em 'Roboto', sans-serif;
+	background: #fff;
+}
+
+#main {
+	margin: auto;
+	width: 861px;
+}
+
+#main > div {
+	width: 100%;
+}
+
+#menu {
+	position: fixed;
+	width: 861px !important;
+	background: #fff;
+	top: 0;
+	left: auto;
+
+	padding: 10px 0 10px 0;
+	text-align: right;
+	z-index: 999;
+}
+
+#menu a {
+	margin-left: 20px;
+	text-decoration: none;
+}
+
+.menu-scroll {
+	border-bottom: 1px solid #B4AFAF;
 }
 
 h2 {
@@ -25,19 +56,9 @@ a:hover {
 	opacity: .9;
 }
 
-body > div {
-	width: 100%;
-
-}
-
 #ad {
-	margin: auto;
-	width: 861px;
 	height: 200px;
-}
-
-#header > *, #ad > *, #featres > * {
-	margin: auto;
+	text-align: center;
 }
 
 #header > p {
@@ -93,8 +114,8 @@ a.dl {
 		background-size: 600px;
 	}
 
-	#features, #ad {
-		width: 600px;
+	#main, #menu {
+		width: 600px !important;
 	}
 
 	.feature {
@@ -109,8 +130,8 @@ a.dl {
 		background-size: 380px;
 	}
 
-	#features, #ad {
-		width: 380px;
+	#main, #menu {
+		width: 380px !important;
 	}
 
 	.feature {
@@ -120,63 +141,71 @@ a.dl {
 	</style>
 </head>
 <body>
-<div id="ad">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3999004794961337"
-     data-ad-slot="2149778178"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
+<div id="main">
+	<div id="home"></div>
+	<div id="menu">
+		<a id="m-home" href="#home">Home</a>
+		<a id="m-features" href="#features">Features</a>
+	</div>
 
-<div id="header">
-	<img id="logo" src="https://cdn.rawgit.com/sunabozu/subordination/master/icon.png" />
-	<h2>Translate and edit subtitles with Subordination</h2>
-	<p id="dl"><a class="dl" href="">Download v0.1.1 for Mac</a></p>
-	<div id="main-screenshot"></div>
-</div>
+	<div id="ad">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-3999004794961337"
+	     data-ad-slot="2149778178"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</div>
 
-<div id="features">
-	<div class="feature">
-		<h2>Opensource</h2>
-		<p>Subordination is completely free and open, you can use it in any way you want. Feel free to <a href="https://github.com/sunabozu/subordination">contribute</a> your code.</p>
+	<div id="header">
+		<img id="logo" src="https://cdn.rawgit.com/sunabozu/subordination/master/icon.png" />
+		<h2>Translate and edit subtitles with Subordination</h2>
+		<p id="dl"><a class="dl" href="">Download v0.1.1 for Mac</a></p>
+		<div id="main-screenshot"></div>
 	</div>
-	<div class="feature">
-		<h2>Automatic updates</h2>
-		<p>The updates come automatically, so you can always have the latest version. The Windows version supports delta updates.</p>
-	</div>
-	<div class="feature">
-		<h2>Opensubtitles</h2>
-		<p>You can upload your translation directly to Opensubtitles.org. There are several <a href="https://github.com/sunabozu/subordination/blob/gh-pages/docs/webchimera.md">requirements</a> though.</p>
-	</div>
-	<div class="feature">
-		<h2>Restoring your session</h2>
-		<p>Subordination automatically saves and restores your project in a state you left it in your previous session.</p>
-	</div>
-	<div class="feature">
-		<h2>Not only for translation</h2>
-		<p>Although the primary focus is on translation, you can shift the timing of your subtitles, add new and edit existing entries.</p>
-	</div>
-	<div class="feature">
-		<h2>Modern technologies</h2>
-		<p>Under the hood Subordination uses <a href="http://electron.atom.io/">Electron</a>, <a href="http://vuejs.org/">Vue.js</a>, <a href="https://github.com/RSATom/WebChimera.js">Webchimera</a>, and other great opensource projects.</p>
-	</div>
-	<div class="feature">
-		<h2>Video synchronisation</h2>
-		<p>Subordination supports <a href="https://wiki.videolan.org/VLC_Features_Formats/">a lot of video formats</a> and allows you to tie your subtitles to a video file. The video module loads separately with your persmission.</p>
-	</div>
-	<div class="feature">
-		<h2>Cross-platform</h2>
-		<p>The application is avaliable in two flavours for OS X and Windows. Both versions are 64-bit and look slightly differently on each platform.</p>
-	</div>
-	<div style="clear: both"></div>
-</div>
 
-<div id="footer">
-	
+	<div id="features">
+		<div class="feature">
+			<h2>Opensource</h2>
+			<p>Subordination is completely free and open, you can use it in any way you want. Feel free to <a href="https://github.com/sunabozu/subordination">contribute</a> your code.</p>
+		</div>
+		<div class="feature">
+			<h2>Automatic updates</h2>
+			<p>The updates come automatically, so you can always have the latest version. The Windows version supports delta updates.</p>
+		</div>
+		<div class="feature">
+			<h2>Opensubtitles</h2>
+			<p>You can upload your translation directly to Opensubtitles.org. There are several <a href="https://github.com/sunabozu/subordination/blob/gh-pages/docs/webchimera.md">requirements</a> though.</p>
+		</div>
+		<div class="feature">
+			<h2>Restoring your session</h2>
+			<p>Subordination automatically saves and restores your project in a state you left it in your previous session.</p>
+		</div>
+		<div class="feature">
+			<h2>Not only for translation</h2>
+			<p>Although the primary focus is on translation, you can shift the timing of your subtitles, add new and edit existing entries.</p>
+		</div>
+		<div class="feature">
+			<h2>Modern technologies</h2>
+			<p>Under the hood Subordination uses <a href="http://electron.atom.io/">Electron</a>, <a href="http://vuejs.org/">Vue.js</a>, <a href="https://github.com/RSATom/WebChimera.js">Webchimera</a>, and other great opensource projects.</p>
+		</div>
+		<div class="feature">
+			<h2>Video synchronisation</h2>
+			<p>Subordination supports <a href="https://wiki.videolan.org/VLC_Features_Formats/">a lot of video formats</a> and allows you to tie your subtitles to a video file. The video module loads separately with your persmission.</p>
+		</div>
+		<div class="feature">
+			<h2>Cross-platform</h2>
+			<p>The application is avaliable in two flavours for OS X and Windows. Both versions are 64-bit and look slightly differently on each platform.</p>
+		</div>
+		<div style="clear: both"></div>
+	</div>
+
+	<div id="footer">
+		
+	</div>
 </div>
 
 <script type="text/javascript">
@@ -188,21 +217,70 @@ a.dl {
 	// load and show the main screenshot
 	var loader = new Image()
 	loader.onload = function() {
-		console.log('loaded')
 
 		setTimeout(function() {
 			screenshot.style.backgroundImage = 'url("schema.png")'
 			screenshot.classList.add('slide-screenshot')
-		}, 1500)
+		}, 1000)
 	}
 
 	loader.src = 'schema.png'
 
+	// basic scrolling preparation
+	var menu = document.querySelector('#menu')
+	window.addEventListener('scroll', function(e) {
+		if(window.pageYOffset > 0) {
+			menu.classList.add('menu-scroll')
+		} else {
+			menu.classList.remove('menu-scroll')
+		}
+	})
 
+	// animate scrolling
+	var home = document.querySelector('#home')
+	var features = document.querySelector('#features')
+
+	function animate(to, time, offset, prop) {
+    var elem = document.body
+    var style = 'scrollTop'
+    var unit = 0
+    var from = window.pageYOffset
+    to = to.offsetTop - offset
+    var start = new Date().getTime(),
+        timer = setInterval(function() {
+            var step = Math.min(1,(new Date().getTime()-start)/time)
+            if (prop) {
+                elem[style] = (from+step*(to-from))+unit
+            } else {
+                elem.style[style] = (from+step*(to-from))+unit
+            }
+            if( step == 1) clearInterval(timer)
+        }, 25)
+    elem.style[style] = from+unit
+	}
+
+	document.querySelector('#m-home').onclick = function(e) {
+		animate(home, 500, 0, true)
+		return false
+	}
+
+	document.querySelector('#m-features').onclick = function(e) {
+		
+		animate(features, 500, 30, true)
+		return false
+	}
 	
-
 })()
 
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-5416506-10', 'auto');
+  ga('send', 'pageview');
 </script>
 </body>
 </html>
