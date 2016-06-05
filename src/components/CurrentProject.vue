@@ -8,8 +8,6 @@ import iButton from './iButton.vue'
 // import Popover from './Popover.vue'
 // import Spinner from './Spinner.vue'
 
-const notifier = require('node-notifier')
-
 
 export default {
 	components: {

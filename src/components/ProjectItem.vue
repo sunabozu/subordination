@@ -6,7 +6,6 @@ import CurrentProject from './CurrentProject.vue'
 import Popup from '../directives/Popup'
 import ProjectIcon from './ProjectIcon.vue'
 import Spinner from './Spinner.vue'
-const notifier = require('node-notifier')
 
 
 export default {
@@ -115,7 +114,10 @@ export default {
 					console.log(`result: ${JSON.stringify(resp)}`, resp.data)
 
 					if(resp.alreadyindb) {
-						return notifier.notify({title: 'The subtitles are already in the database', message: 'There is nothing to upload'})
+						return new Notification('The subtitles are already in the database', {
+							body: 'There is nothing to upload',
+							silent: true
+						})
 					}
 
 					// if we got the link to the uploaded subtitles
@@ -126,7 +128,10 @@ export default {
 			})
 				.catch(err => {
 					console.log(`error: ${JSON.stringify(err)}`)
-					notifier.notify({title: `The subtitles couldn't be uploaded`, message: JSON.stringify(err)})
+					new Notification(`The subtitles couldn't be uploaded`, {
+						body: JSON.stringify(err),
+						silent: true
+					})
 				})
 				.finally(resp => {
 					this.wait = false

@@ -12,8 +12,8 @@ module.exports = function() {
 			console.log(data, remote.app.WC_VERSION)
 			if(data != remote.app.WC_VERSION) {
 				const err = `The version of Webchimera is wrong. Expected ${remote.app.WC_VERSION}, but got ${data}`
-				const notifier = require('node-notifier')
-				notifier.notify({title: 'Error', message: err})
+				// const notifier = require('node-notifier')
+				// notifier.notify({title: 'Error', message: err})
 				throw new Error(err)
 			} else { // success
 				console.log('success')

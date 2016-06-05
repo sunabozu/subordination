@@ -21,7 +21,6 @@
     "app-bundle-id": "org.subordination",
     "app-category-type": "public.app-category.education",
 		"app-copyright": "Copyright © 2016 troorl",
-    "compression": "maximum",
     "ignore": "app/node_modules/webchimera.js",
 		"extend-info": "build/info.plist",
 		"extraResources": ["Credits.html", "icon.png", "add_reg_keys.reg", "remove_reg_keys.reg"],
