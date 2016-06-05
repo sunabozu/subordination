@@ -17,7 +17,7 @@ p {
 	line-height: 140%;
 }
 
-body > div, #features {
+body > div, #features, #footer {
 	margin: auto;
 	margin-top: 30px;
 	width: 861px;
@@ -165,9 +165,18 @@ a.dl {
 }
 
 #footer {
-	background: #ECECEC;
 	text-align: left;
-	padding: 10px;
+	padding: 10px 0 10px 0;
+}
+
+#footer a {
+	margin-right: 20px;
+	text-decoration: none;
+	color: #969696;
+}
+
+.footer {
+	background: #ECECEC !important;
 }
 
 @media (max-width: 900px) {
@@ -176,7 +185,7 @@ a.dl {
 		background-size: 600px;
 	}
 
-	body > div, #menu, #features {
+	body > div, #menu, body > span > div {
 		width: 600px !important;
 	}
 
@@ -200,7 +209,7 @@ a.dl {
 		background-size: 380px;
 	}
 
-	body > div, #menu, #features {
+	body > div, #menu, body > span > div {
 		width: 380px !important;
 	}
 
@@ -216,7 +225,6 @@ a.dl {
 		width: 170px;
 		height: 170px;
 	}
-	}
 }
 	</style>
 </head>
@@ -224,8 +232,9 @@ a.dl {
 	<div id="home"></div>
 	<div id="menu">
 		<a id="m-home" href="#home">Home</a>
-		<a id="m-overview" href="#overview">Overview</a>
-		<a id="m-preview" href="#preview">Screenshots</a>
+		<a id="m-overview" href="#features">Overview</a>
+		<a id="m-features" href="#overview">Features</a>
+		<a id="m-feedback" href="#feedback">Feedback</a>
 	</div>
 
 	<div id="ad">
@@ -243,7 +252,7 @@ a.dl {
 	<div id="header">
 		<img id="logo" src="https://cdn.rawgit.com/sunabozu/subordination/master/icon.png" />
 		<p>Translate and edit subtitles with Subordination</p>
-		<p id="dl"><a class="dl" href="">Download v0.1.1 for Mac</a></p>
+		<p><a id="dl" class="dl" href="https://github.com/sunabozu/subordination/releases">Download</a></p>
 		<div id="main-screenshot"></div>
 	</div>
 
@@ -269,7 +278,7 @@ a.dl {
 	<div id="overview">
 		<div>
 			<div class="image">
-				<img src="screen_mac_preview.png" />
+				<img src="img/updates.png" />
 			</div>
 			<div class="desc">
 				<h2>Automatic updates</h2>
@@ -284,14 +293,14 @@ a.dl {
 				<p>You can upload your translation directly to Opensubtitles.org. There are several <a href="https://github.com/sunabozu/subordination/blob/gh-pages/docs/webchimera.md">requirements</a> though.</p>
 			</div>
 			<div class="image">
-				<img src="screen_mac_preview.png" />
+				<img src="img/ost.png" />
 			</div>
 			<p style="clear:both;"></p>
 		</div>
 
 		<div>
 			<div class="image">
-				<img src="screen_mac_preview.png" />
+				<img src="img/session.png" />
 			</div>
 			<div class="desc">
 				<h2>Restoring your session</h2>
@@ -306,14 +315,14 @@ a.dl {
 				<p>The application is avaliable in two flavours for OS X and Windows. Both versions are 64-bit and look slightly differently on each platform.</p>
 			</div>
 			<div class="image">
-				<img src="screen_mac_preview.png" />
+				<img src="img/cross-platform.png" />
 			</div>
 			<p style="clear:both;"></p>
 		</div>
 
 		<div>
 			<div class="image">
-				<img src="screen_mac_preview.png" />
+				<img src="img/sync.png" />
 			</div>
 			<div class="desc">
 				<h2>Video synchronisation</h2>
@@ -328,30 +337,24 @@ a.dl {
 				<p>You can work on several projects simultaneously. Switch between them by a single click - they all are listed on the left panel.</p>
 			</div>
 			<div class="image">
-				<img src="screen_mac_preview.png" />
+				<img src="img/projects.png" />
 			</div>
 			<p style="clear:both;"></p>
 		</div>
 		<p style="clear:both;"></p>
 	</div>
 
-
-	<div id="links">
-		<h2>Links</h2>
-		<p>
-			<a class="dl" href="https://github.com/sunabozu/subordination/releases">See all available downloads</a>
-		</p>
-		<p>
-			<a class="dl blue" href="https://github.com/sunabozu/subordination/issues">Report a bug or post a feature request</a>
-		</p>
-		<p>
-			<a class="dl yellow" href="https://github.com/sunabozu/subordination">Build it from sources and contribute to the project</a>
-		</p>
+	<div id="feedback">
+		<div id="disqus_thread"></div> <script> /* var disqus_config = function () { this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable }; */ (function() { var d = document, s = d.createElement('script'); s.src = 'https://pino-test.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script>
 	</div>
 
-	<div id="footer">
-		Copyright
-	</div>
+	<span class="footer">
+		<div id="footer">
+			<a href="https://github.com/sunabozu/subordination/releases">Downloads</a>
+			<a href="https://github.com/sunabozu/subordination/issues">Report a bug</a>
+			<a href="https://github.com/sunabozu/subordination">Contribute</a>
+		</div>
+	</span>
 
 <script type="text/javascript">
 
@@ -364,12 +367,12 @@ a.dl {
 	loader.onload = function() {
 
 		setTimeout(function() {
-			screenshot.style.backgroundImage = 'url("schema.png")'
+			screenshot.style.backgroundImage = 'url("img/schema.png")'
 			screenshot.classList.add('slide-screenshot')
 		}, 1000)
 	}
 
-	loader.src = 'schema.png'
+	loader.src = 'img/schema.png'
 
 	// basic scrolling preparation
 	var menu = document.querySelector('#menu')
@@ -385,7 +388,7 @@ a.dl {
 	var home = document.querySelector('#home')
 	var features = document.querySelector('#features')
 	var overview = document.querySelector('#overview')
-	var preview = document.querySelector('#preview')
+	var feedback = document.querySelector('#feedback')
 
 	function animate(to, time, offset, prop) {
     var elem = document.body
@@ -412,14 +415,61 @@ a.dl {
 	}
 
 	document.querySelector('#m-overview').onclick = function(e) {
+		animate(features, 500, 43, true)
+		return false
+	}
+
+	document.querySelector('#m-features').onclick = function(e) {
 		animate(overview, 500, 43, true)
 		return false
 	}
 
-	document.querySelector('#m-preview').onclick = function(e) {
-		animate(preview, 500, 43, true)
+	document.querySelector('#m-feedback').onclick = function(e) {
+		animate(feedback, 500, 43, true)
 		return false
 	}
+
+	// get the release info
+	var req = new XMLHttpRequest()
+	req.onreadystatechange = function() {
+		if(req.readyState !== XMLHttpRequest.DONE)
+			return
+
+		if(req.status != 200) // error happened
+			return
+
+		var data = JSON.parse(req.responseText)
+
+		var dlForMac = null
+		var dlForWin = null
+		var platform = null
+
+		for(var i = 0; i < data.assets.length; i++) {
+			if(data.assets[i].browser_download_url.substr(data.assets[i].browser_download_url.length - 4) == '.exe')
+				dlForWin = data.assets[i].browser_download_url
+
+			if(data.assets[i].browser_download_url.substr(data.assets[i].browser_download_url.length - 4) == '.dmg')
+				dlForMac = data.assets[i].browser_download_url
+		}
+
+		if((navigator.appVersion.indexOf("Win")!=-1))
+			platform = 'Windows'
+		if((navigator.appVersion.indexOf("Mac")!=-1))
+			platform = 'Mac'
+
+
+		var dl = document.querySelector('#dl')
+		dl.innerHTML += ' ' + data.tag_name
+
+		if(platform) {
+			dl.innerHTML += ' for ' + platform
+			dl.href = platform == 'Windows' ? dlForWin : dlForMac // TODO correct if a Linux version occurs
+		}
+		console.log(data.assets)
+	}
+
+	req.open('GET', 'https://api.github.com/repos/sunabozu/subordination/releases/latest')
+	req.send(null)
 
 })()
 
