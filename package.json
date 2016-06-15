@@ -12,6 +12,7 @@
     "dist:osx": "build --platform=darwin --arch=x64",
     "dist:win": "build --platform=win32 --arch=x64",
     "start": "APP_DEBUG=1 electron ./app",
+		"start:win": "cmd /C \"set APP_DEBUG=1 && electron ./app",
     "publish": "npm run clean && npm run publish:osx && npm run publish:win",
     "publish:osx": "build --platform=darwin --arch=x64 --publish onTagOrDraft",
     "publish:win": "build --platform=win32 --publish onTagOrDraft"

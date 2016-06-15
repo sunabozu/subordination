@@ -69,7 +69,8 @@ body[platform=win32][inactive=true] .main-container {
 }
 
 body[platform=win32] .left-panel {
-	border-right: var(--border-thick);
+	// border-right: var(--border-thick);
+	-webkit-filter: invert(85%);
 }
 
 .central-panel {
