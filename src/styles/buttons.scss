@@ -163,6 +163,10 @@ body[platform=win32] .toolbar .btn {
 }
 
 // titlebar controls (for Windows only)
+.btn-group.btn-win {
+	min-width: 138px;
+}
+
 .btn.btn-win {
 	width: 46px;
 	height: 28px;

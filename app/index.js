@@ -86,6 +86,7 @@ app.on('ready', () => {
 		frame: process.platform == 'win32' ? false : true,
 		textAreasAreResizable: false,
 		titleBarStyle: 'hidden-inset',
+		backgroundColor: process.platform == 'win32' ? '#0078d7' : '#ececec'
 	})
 
 	winPos.manage(mainWindow) // saves and restores window's position

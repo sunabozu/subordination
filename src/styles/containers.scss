@@ -13,6 +13,11 @@ body {
 	}
 }
 
+body[platform=win32] {
+	background: #0078d7;
+	padding: 1px;
+}
+
 .main-container {
 	display: flex;
 	flex-direction: row;
@@ -29,15 +34,16 @@ body {
 }
 
 body[platform=win32] .main-container {
-	border: 1px solid #0078d7;
+	// border: 1px solid #0078d7;
+	// margin: 1px;
 }
 
-body[platform=win32][maximized=true] .main-container {
-	border: 0;
+body[platform=win32][maximized=true] {
+	padding: 0;
 }
 
-body[platform=win32][inactive=true] .main-container {
-	border: 1px solid var(--window-color);
+body[platform=win32][inactive=true] {
+	background: var(--window-color);
 }
 
 @keyframes fade-in {
@@ -83,7 +89,7 @@ body[platform=win32] .left-panel {
 }
 
 .right-panel {
-	// min-width: 338px;
+	min-width: 344px;
 	// item:nth-child(2);
 	// order: 2;
 	flex-grow: 1;

@@ -130,7 +130,7 @@ export default {
 
 			mainUiOpts: {
 				init: [150, 200],
-				min: [130, 160, 343]
+				min: [130, 160, 344]
 			},
 
 			rightPanelUiOpts: {
@@ -645,9 +645,9 @@ export default {
 
 				case 'window-maximized':
 					if(msg.data)
-						document.body.removeAttribute('maximized')
-					else
 						document.body.setAttribute('maximized', true)
+					else
+						document.body.removeAttribute('maximized')
 					break
 
 				case 'open-with':
