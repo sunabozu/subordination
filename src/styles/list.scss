@@ -2,29 +2,26 @@
 	flex-grow: 1;
 	overflow-y: scroll;
 	background: #fff;
-	cursor: inherit;
+	border-right: var(--border-thick);
 }
 
 .list-group-item {
 	display: flex;
-	cursor: inherit;
 	padding-left: 0;
 	height: 85px;
 
 	&>div {
 		flex-grow: 1;
-		cursor: inherit;
+	}
 
-		& p {
-			cursor: inherit;
-		}
+	& p {
+		cursor: default;
 	}
 }
 
 .list-item-header {
 	display: flex;
 	justify-content: space-between;
-	cursor: inherit;
 }
 
 .list-item-indicator {
@@ -33,7 +30,6 @@
 	margin-right: 10px;
 	margin-top: -10px;
 	margin-bottom: -10px;
-	cursor: inherit;
 }
 
 .light {
@@ -43,6 +39,7 @@
 	font-size: calc(var(--font-size-default) - 2px);
 	opacity: .5;
 	// z-index:
+	cursor: default;
 }
 
 .active .light {

@@ -1,7 +1,7 @@
 {
   "scripts": {
-		"prepare:osx": "npm i --ignore-scripts && node node_modules/node-sass/scripts/install.js && node node_modules/electron-prebuilt/install.js",
-		"prepare:win": "npm i --ignore-scripts && node node_modules/node-sass/scripts/install.js && cd node_modules/electron-prebuilt && npm i --arch=ia32",
+    "prepare:osx": "npm i --ignore-scripts && node node_modules/node-sass/scripts/install.js && node node_modules/electron-prebuilt/install.js",
+    "prepare:win": "npm i --ignore-scripts && node node_modules/node-sass/scripts/install.js && cd node_modules/electron-prebuilt && npm i --arch=ia32",
     "build-dev": "gulp build-debug",
     "watch-dev": "gulp watch-debug",
     "build-release": "gulp build",
@@ -12,26 +12,31 @@
     "dist:osx": "build --platform=darwin --arch=x64",
     "dist:win": "build --platform=win32 --arch=x64",
     "start": "APP_DEBUG=1 electron ./app",
-		"publish": "npm run clean && npm run publish:osx && npm run publish:win",
-		"publish:osx": "build --platform=darwin --arch=x64 --publish onTagOrDraft",
-		"publish:win": "build --platform=win32 --publish onTagOrDraft"
+    "publish": "npm run clean && npm run publish:osx && npm run publish:win",
+    "publish:osx": "build --platform=darwin --arch=x64 --publish onTagOrDraft",
+    "publish:win": "build --platform=win32 --publish onTagOrDraft"
   },
   "build": {
-		"productName": "Subordination",
+    "productName": "Subordination",
     "app-bundle-id": "org.subordination",
     "app-category-type": "public.app-category.education",
-		"app-copyright": "Copyright © 2016 troorl",
+    "app-copyright": "Copyright © 2016 troorl",
     "ignore": "app/node_modules/webchimera.js",
-		"extend-info": "build/info.plist",
-		"extraResources": ["Credits.html", "icon.png", "add_reg_keys.reg", "remove_reg_keys.reg"],
+    "extend-info": "build/info.plist",
+    "extraResources": [
+      "Credits.html",
+      "icon.png",
+      "add_reg_keys.reg",
+      "remove_reg_keys.reg"
+    ],
     "osx": {
       "identity": "troorl"
     },
-		"win": {
-			"iconUrl": "https://raw.githubusercontent.com/sunabozu/subordination/master/build/icon.ico",
-			"loadingGif": "build/instal-splash.gif",
-			"remoteReleases": "https://github.com/sunabozu/subordination"
-		}
+    "win": {
+      "iconUrl": "https://raw.githubusercontent.com/sunabozu/subordination/master/build/icon.ico",
+      "loadingGif": "build/instal-splash.gif",
+      "remoteReleases": "https://github.com/sunabozu/subordination"
+    }
   },
   "directories": {
     "output": "./installers"
@@ -62,6 +67,7 @@
     "template-html-loader": "0.0.3",
     "vue-html-loader": "^1.2.2",
     "vue-loader": "^8.3.1",
+    "vue-style-loader": "^1.0.0",
     "webpack": "^1.13.0",
     "webpack-target-electron-renderer": "^0.3.0"
   },

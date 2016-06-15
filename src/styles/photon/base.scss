@@ -3,23 +3,22 @@
 // --------------------------------------------------
 
 * {
-  cursor: default;
+  // cursor: default;
   -webkit-user-drag: text;
   -webkit-user-select: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-html {
+html, body {
   height: 100%;
   width: 100%;
+	padding: 0;
+  margin: 0;
   overflow: hidden;
 }
 
 body {
-  height: 100%;
-  padding: 0;
-  margin: 0;
   // font-family: $font-family-default;
   // font-size: $font-size-default;
   // line-height: $line-height-default;

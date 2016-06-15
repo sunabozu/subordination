@@ -7,6 +7,7 @@ export default {
 		leftPanelWidth: 250,
 		centralPanelWidth: 300,
 		videoViewHeight: 400,
+		transInputHeight: 100,
 
 		projectSortOrder: 0, // 0 - by export name, 1 - by usage
 
@@ -25,8 +26,8 @@ export default {
 			console.log(width)
 		},
 
-		[types.SET_VIDEO_VIEW_HEIGHT](ui, height) {
-			ui.videoViewHeight = height
+		[types.SET_TRANS_INPUT_HEIGHT](ui, height) {
+			ui.transInputHeight = height
 			console.log(height)
 		},
 

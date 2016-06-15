@@ -17,7 +17,6 @@ import VideoView from './components/VideoView.vue'
 import Modal from './components/Modal.vue'
 import Bottom from './components/Bottom.vue'
 import VProgress from './components/VProgress.vue'
-import Splitter from './components/Splitter.vue'
 import TransInput from './components/TransInput.vue'
 import iButton from './components/iButton.vue'
 import PreferencesModal from './components/PreferencesModal.vue'
@@ -32,6 +31,7 @@ import WindowButtons from './components/WindowButtons.vue'
 import Popup from './directives/Popup'
 import Dropzone from './directives/Dropzone'
 import Dropdown from './directives/Dropdown'
+import Split from './directives/Split'
 
 import './filters/escape'
 import './filters/time'
@@ -50,7 +50,6 @@ export default {
 		Modal,
 		Bottom,
 		VProgress,
-		Splitter,
 		TransInput,
 		iButton,
 		PreferencesModal,
@@ -67,6 +66,7 @@ export default {
 		Popup,
 		Dropzone,
 		Dropdown,
+		Split,
 	},
 
 	store,
@@ -95,7 +95,7 @@ export default {
 
 			setLeftPanelWidth: actions.ui.setLeftPanelWidth,
 			setCentralPanelWidth: actions.ui.setCentralPanelWidth,
-			setVideoViewHeight: actions.ui.setVideoViewHeight,
+			setTransInputHeight: actions.ui.setTransInputHeight,
 		}
 	},
 
@@ -127,6 +127,16 @@ export default {
 			updatePopupShown: false,
 
 			mainMenu: null,
+
+			mainUiOpts: {
+				init: [150, 200],
+				min: [130, 160, 343]
+			},
+
+			rightPanelUiOpts: {
+				init: [100],
+				min: [50, 150]
+			},
 		}
 	},
 
@@ -189,6 +199,10 @@ export default {
 		},
 	},
 
+	events: {
+
+	},
+
 	methods: {
 		onCanvasReady(canvas) {
 			const result = this.initPlayer(canvas)
@@ -201,6 +215,19 @@ export default {
 			if(result === 2) { // it means there is no webchimera module, so download it
 				this.$broadcast('plugins-not-ready', true)
 			}
+		},
+
+		onMainUiChanged(index, value) {
+			console.log(index, value)
+			if(index === 0) // left panel
+				this.setLeftPanelWidth(value)
+			else // central panel
+				this.setCentralPanelWidth(value)
+		},
+
+		onRightPanelUiChanged(index, value) {
+			console.log('right panel', index, value)
+			this.setTransInputHeight(value)
 		},
 
 		onSetSubFile(sub_path) {
@@ -558,9 +585,20 @@ export default {
 					}
 
 					// setup the panels dimensions
-					this.$els.leftPanel.style.width = this.state.ui.leftPanelWidth + 'px'
-					this.$els.centralPanel.style.width = this.state.ui.centralPanelWidth + 'px'
-					this.$els.videoView.style.height = this.state.ui.videoViewHeight + 'px'
+					this.mainUiOpts = {
+						pos: 'hor',
+						min: this.mainUiOpts.min,
+						init: [this.state.ui.leftPanelWidth, this.state.ui.centralPanelWidth]
+					}
+
+					this.rightPanelUiOpts = {
+						pos: 'vert',
+						min: this.rightPanelUiOpts.min,
+						init: [this.state.ui.transInputHeight]
+					}
+					// this.$els.leftPanel.style.width = this.state.ui.leftPanelWidth + 'px'
+					// this.$els.centralPanel.style.width = this.state.ui.centralPanelWidth + 'px'
+					// this.$els.videoView.style.height = this.state.ui.videoViewHeight + 'px'
 
 					console.log('making it visible')
 					this.appIsReady = true // make the main container visible
@@ -646,7 +684,7 @@ export default {
 </script>
 
 <template>
-	<div class="main-container" style="display:none;" v-show="appIsReady">
+	<div class="main-container" style="display:none;" v-show="appIsReady" v-split="mainUiOpts" :split-callback="onMainUiChanged">
 		<div
 			class="panel left-panel"
 			v-el:left-panel
@@ -673,9 +711,10 @@ export default {
 			</project-list>
 		</div>
 
-		<splitter @on-change="setLeftPanelWidth" class="left-panel-splitter"></splitter>
-
-		<div class="central-panel" v-el:central-panel>
+		<div
+			class="panel central-panel"
+			v-el:central-panel
+			>
 			<header class="toolbar toolbar-header">
 				<div class="toolbar-actions">
 					<sub-filter></sub-filter>
@@ -691,9 +730,9 @@ export default {
 			</sub-list>
 		</div>
 
-		<splitter @on-change="setCentralPanelWidth"></splitter>
-
-		<div class="right-panel">
+		<div
+			class="panel right-panel"
+			>
 			<header class="toolbar toolbar-header">
 				<div class="toolbar-actions">
 
@@ -743,16 +782,23 @@ export default {
 
 			</header>
 
-			<video-view
-				v-el:video-view
-				@canvas-ready="onCanvasReady"
-				v-dropzone="{callback: onSetVideoFile, active: currentProject}"
-				>
-			</video-view>
-			<splitter orientation="horizontal" @on-change="setVideoViewHeight"></splitter>
-			<trans-input :model="currentProject"></trans-input>
-		</div>
+			<div v-split="rightPanelUiOpts" :split-callback="onRightPanelUiChanged" class="right-container">
+				<video-view
+					slot="first"
+					v-el:video-view
+					@canvas-ready="onCanvasReady"
+					v-dropzone="{callback: onSetVideoFile, active: currentProject}"
+					>
+				</video-view>
 
+				<div
+					slot="second"
+					id="trans-input-container"
+					>
+					<trans-input :model="currentProject"></trans-input>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<preferences-modal

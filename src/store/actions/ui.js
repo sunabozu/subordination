@@ -9,8 +9,8 @@ export default {
 		dispatch('SET_CENTRAL_PANEL_WIDTH', width)
 	},
 
-	setVideoViewHeight({actions, dispatch, state}, height) {
-		dispatch('SET_VIDEO_VIEW_HEIGHT', height)
+	setTransInputHeight({actions, dispatch, state}, height) {
+		dispatch('SET_TRANS_INPUT_HEIGHT', height)
 	},
 
 	setProjectSortOrder({actions, dispatch, state}, projectSortOrder) {

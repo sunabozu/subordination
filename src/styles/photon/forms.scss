@@ -9,6 +9,7 @@ label {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+	cursor: default !important;
 }
 
 input[type="search"] {
