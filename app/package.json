@@ -1,7 +1,7 @@
 {
   "name": "subordination",
   "productName": "Subordination",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "troorl <troorl@gmail.com>",
   "description": "A desktop application for translating and editing subtitles",
   "license": "MIT",
