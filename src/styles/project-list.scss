@@ -27,9 +27,8 @@
 }
 
 project-list {
-	// overflow-y: scroll;
-	overflow: hidden;
-	cursor: inherit;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 body[platform=darwin] project-list {
