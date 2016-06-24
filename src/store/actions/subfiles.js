@@ -39,6 +39,7 @@ export default {
 				lang: null,
 				imdbid: null,
 				video_position: 0.0,
+				scroll: 0,
 				current_index: 0,
 				items: [],
 				filter: 'all',

@@ -146,6 +146,10 @@ export default {
 
 		[types.SET_CURRENT_VIDEO_POSITION](subfiles, position) {
 			Vue.set(subfiles.projects[subfiles.current], 'video_position', position)
-		}
+		},
+
+		[types.SET_SCROLL_POSITION](subfiles, position) {
+			Vue.set(subfiles.projects[subfiles.current], 'scroll', position)
+		},
 	}
 }

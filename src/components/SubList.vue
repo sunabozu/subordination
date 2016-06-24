@@ -18,15 +18,14 @@ export default {
 
 	data: () => {
 		return {
-			partialName: 'sub-list-item',
 			itemHeight: 85,
-			amount: 0,
-			firstItem: 0,
-			excess: 5,
 			virtualIndex: undefined,
 
 			// before: 0,
 			// after: 0,
+
+			listHeight: 0,
+			skip: 0,
 
 			contextMenu: []
 		}
@@ -37,6 +36,10 @@ export default {
 			// type: Object,
 			required: true,
 		},
+
+		buffer: {
+			default: 1,
+		}
 	},
 
 	vuex: {
@@ -45,6 +48,8 @@ export default {
 			copyOriginalSubitem: actions.subfiles.copyOriginalSubitem,
 
 			setVideoTime: actions.player.setVideoTime,
+
+			setScrollPosition: ({dispatch}, position) => { dispatch('SET_SCROLL_POSITION', position) },
 		}
 	},
 
@@ -61,7 +66,6 @@ export default {
 			if(!this.model)
 				return []
 
-			this.amount = Math.round(this.$el.clientHeight / this.itemHeight)
 			const result = []
 
 			switch(this.model.filter) {
@@ -70,27 +74,73 @@ export default {
 						if(value.text_trans === '')
 							result.push({index, value})
 					})
-					return result
+					break
 				case 'all':
 					this.model.items.forEach((value, index) => {
 						result.push({index, value})
+
+						// restore the previously saved position
+						setTimeout(() => {
+							console.log('scroll', this.model.scroll)
+							this.$el.scrollTop = this.model.scroll != undefined ? this.model.scroll : 0
+						}, 0)
 					})
-					return result
+					break
 				case 'ready':
 					this.model.items.forEach((value, index) => {
 						if(value.text_trans !== '')
 							result.push({index, value})
 					})
-					return result
+					break
 			}
-		}
+
+			this.checkHeight()
+			return result
+		},
+
+		// new
+		visibleItems() {
+			return this.listHeight + this.buffer
+		},
+
+		visibleRange() {
+			return [this.skip, this.visibleItems + this.skip]
+		},
+
+		beginHeight() {
+			return this.skip * this.itemHeight
+		},
+
+		endHeight() {
+			const result = (this.itemsFiltered.length - this.visibleItems - this.skip) * this.itemHeight
+			return result >= 0 ? result : 0
+		},
 	},
 
 	methods: {
-		onScroll(event) {
-			this.amount = Math.round(this.$el.clientHeight / this.itemHeight)
+		onScroll() {
+			let skip = Math.round(this.$el.scrollTop / this.itemHeight) - this.buffer
 
-			this.firstItem = Math.round(event.target.scrollTop / this.itemHeight)
+			if(skip < 0) {
+				this.skip = 0
+				return
+			}
+
+			const diff = this.itemsFiltered.length - this.visibleItems
+
+			if(skip > diff) {
+				if(diff < 0)
+					skip = 0
+				else
+					skip = this.itemsFiltered.length - this.visibleItems
+			}
+
+			this.skip = skip
+		},
+
+		// save position only when user scrolls or uses keyboard
+		onWheel() {
+			this.setScrollPosition(this.$el.scrollTop)
 		},
 
 		itemSelected(index) {
@@ -124,7 +174,11 @@ export default {
 		// original text into the transinput
 		onDoubleClick(index) {
 			this.copyOriginalSubitem(index)
-		}
+		},
+
+		checkHeight() {
+			this.listHeight = Math.round(this.$el.clientHeight / this.itemHeight)
+		},
 	},
 
 	events: {
@@ -158,17 +212,17 @@ export default {
 	},
 
 	ready() {
-
+		window.addEventListener('resize', this.checkHeight)
 	}
 }
 </script>
 
 <template>
-	<ul class="list-group" tabindex="0" @scroll="onScroll | debounce 18" v-popup="contextMenu">
-		<!-- <div v-el:bef></div> -->
+	<ul class="list-group" tabindex="0" @scroll="onScroll" @mousewheel="onWheel | debounce 100" v-popup="contextMenu">
+		<div v-el:begin :style="{height: beginHeight + 'px'}"></div>
 		<template v-for="item in itemsFiltered">
 			<list-item
-				v-if="($index >= firstItem - excess && $index <= firstItem + amount + excess) || ($index >= activeRange.min && $index <= activeRange.max)"
+				v-if="$index >= visibleRange[0] && $index <= visibleRange[1]"
 				tabindex="-1"
 				:active="item.index == model.current_index"
 				:ready="item.value.text_trans != ''"
@@ -176,6 +230,7 @@ export default {
 				@dblclick="onDoubleClick(item.index)"
 				@keydown.up="itemMoved($index, 'prev')"
 				@keydown.down="itemMoved($index, 'next')"
+				@keydown="onWheel"
 				>
 				<p class="list-item-indicator"></p>
 				<div>
@@ -186,13 +241,8 @@ export default {
 					<p>{{{item.value.text_orig | escape}}}</p>
 				</div>
 			</list-item>
-			<li
-				v-else
-				class="list-group-item"
-				>
-			</li>
 		</template>
 
-		<!-- <div v-el:aft></div> -->
+		<div v-el:end :style="{height: endHeight + 'px'}"></div>
 	</ul>
 </template>
