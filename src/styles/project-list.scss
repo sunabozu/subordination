@@ -35,6 +35,12 @@ body[platform=darwin] project-list {
 	font-weight: 300;
 }
 
+body[platform=win32] project-list {
+	&::-webkit-scrollbar {
+		width: 0px;
+	}
+}
+
 .project-expanded span {
 	font: small-caption;
 	color: var(--dark-border-color);
