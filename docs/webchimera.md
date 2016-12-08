@@ -4,4 +4,4 @@
 * Load an appropriate video file
 * Input or retrieve a correct IMDB identifier
 
-Those are quirements of [Opensubtitles.org](http://www.opensubtitles.org/) itself, there is nothing we can do to lift them.
+Those are requirements of [Opensubtitles.org](http://www.opensubtitles.org/) itself, there is nothing we can do to lift them.
